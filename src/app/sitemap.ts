@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/constants/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lika-nutrition.ru'
   const lastModified = new Date()
 
   // Основные секции сайта с приоритетами

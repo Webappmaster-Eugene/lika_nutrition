@@ -13,7 +13,7 @@ export default function Contact() {
       id="contact"
       className="py-12 xs:py-16 sm:py-20 md:py-24 bg-gradient-to-br from-beige-50 to-beige-100"
     >
-      <div className="container mx-auto px-3 xs:px-4">
+      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Заголовок */}
           <motion.div
@@ -145,14 +145,21 @@ export default function Contact() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              <div className="bg-white rounded-2xl xs:rounded-3xl shadow-2xl p-4 xs:p-6 sm:p-8 md:p-10 border border-beige-200">
-                <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-3 xs:mb-4 text-beige-800">
-                  Напишите мне
-                </h3>
-                <p className="text-sm xs:text-base text-beige-600 mb-6 xs:mb-8 leading-relaxed">
-                  Заполните форму ниже, и я свяжусь с вами в ближайшее время
-                </p>
-                <ContactForm />
+              <div className="bg-white rounded-3xl shadow-2xl p-6 xs:p-8 sm:p-10 md:p-12 border-2 border-beige-200 hover:border-beige-300 transition-all duration-300 relative overflow-hidden">
+                {/* Декоративный элемент */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-beige-100 to-transparent rounded-bl-full opacity-50" />
+                
+                <div className="relative z-10">
+                  <div className="mb-6 xs:mb-8">
+                    <h3 className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-3 text-beige-800">
+                      Напишите мне
+                    </h3>
+                    <p className="text-sm xs:text-base text-beige-600 leading-relaxed">
+                      Заполните форму ниже, и я свяжусь с вами в ближайшее время
+                    </p>
+                  </div>
+                  <ContactForm />
+                </div>
               </div>
             </motion.div>
           </div>

@@ -8,12 +8,66 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: #faf8f5;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Предотвращение горизонтальной прокрутки */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Мобильная оптимизация для экранов до 471px */
+@media (max-width: 471px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  /* Улучшенная читаемость на маленьких экранах */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Оптимизация для touch-интерфейса */
+  button, a, input, textarea, select {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Предотвращение переполнения контейнеров */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    max-width: 100%;
+  }
+  
+  /* Исправление для grid и flex контейнеров */
+  [class*="grid"], [class*="flex"] {
+    max-width: 100%;
+  }
 }
 
 /* Мобильная оптимизация для экранов до 320px */
@@ -27,12 +81,26 @@ body {
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   
   /* Оптимизация для touch-интерфейса */
   button, a, input, textarea, select {
     min-height: 44px;
     touch-action: manipulation;
+  }
+}
+
+/* Мобильная оптимизация scroll-padding */
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    scroll-padding-top: 60px;
   }
 }
 
@@ -50,6 +118,11 @@ body {
 }
 
 @layer components {
+  /* Исправление для контейнеров на мобильных */
+  .container {
+    @apply w-full max-w-full;
+  }
+  
   .prose {
     @apply text-beige-700;
   }
@@ -91,26 +164,7 @@ body {
   }
   
   .prose img {
-    @apply rounded-lg my-6;
-  }
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
-/* Мобильная оптимизация scroll-padding */
-@media (max-width: 640px) {
-  html {
-    scroll-padding-top: 70px;
-  }
-}
-
-@media (max-width: 320px) {
-  html {
-    scroll-padding-top: 60px;
+    @apply rounded-lg my-6 max-w-full;
   }
 }
 

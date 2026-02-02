@@ -143,12 +143,12 @@ export default function RootLayout({
         {/* Referrer Policy - единственный security meta-тег, который работает в HTML */}
         <meta name="referrer" content="origin-when-cross-origin" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} w-full max-w-full overflow-x-hidden`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-beige-600 focus:text-white">
           Перейти к основному содержимому
         </a>
         <Header />
-        <main id="main-content" className="min-h-screen" role="main">{children}</main>
+        <main id="main-content" className="min-h-screen w-full max-w-full overflow-x-hidden" role="main">{children}</main>
         <Footer />
       </body>
     </html>

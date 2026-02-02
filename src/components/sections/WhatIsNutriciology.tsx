@@ -46,7 +46,7 @@ export default function WhatIsNutriciology() {
       id="nutriciology"
       className="py-24 bg-gradient-to-br from-beige-50 to-beige-100"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden-4">
         <div className="max-w-6xl mx-auto">
           {/* Заголовок */}
           <motion.div

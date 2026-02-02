@@ -50,7 +50,7 @@ export default function ConsultationProcess() {
       id="consultation-process"
       className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
     >
-      <div className="container mx-auto px-3 xs:px-4">
+      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden">
         <div className="max-w-6xl mx-auto">
           {/* Заголовок */}
           <motion.div

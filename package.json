@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "convert-docx": "tsx scripts/convert-docx.ts"
+    "convert-docx": "tsx scripts/convert-docx.ts",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:test": "./test-docker.sh"
   },
   "dependencies": {
     "framer-motion": "^12.29.2",

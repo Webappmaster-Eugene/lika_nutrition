@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/constants/seo'
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lika-nutrition.ru'
+  
   return {
     rules: [
       {
@@ -25,7 +26,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/', '/.next/'],
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   }
 }

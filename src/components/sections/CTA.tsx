@@ -39,7 +39,7 @@ export default function CTA() {
         />
       </div>
 
-      <div className="container mx-auto px-3 xs:px-4 relative z-10">
+      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

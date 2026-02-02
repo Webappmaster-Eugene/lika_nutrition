@@ -40,10 +40,10 @@ export default function Testimonials() {
       <StructuredData data={aggregateRating} />
       <AnimatedSection
         id="testimonials"
-        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
+        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white w-full max-w-full overflow-x-hidden"
       >
-        <div className="container mx-auto px-3 xs:px-4">
-          <div className="max-w-7xl mx-auto">
+        <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden w-full max-w-full">
+          <div className="max-w-7xl mx-auto w-full">
             {/* Заголовок */}
             <motion.div
               className="text-center mb-8 xs:mb-12 sm:mb-16"
@@ -113,14 +113,14 @@ export default function Testimonials() {
       <AnimatePresence>
         {selectedImage !== null && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 xs:p-4 w-full max-w-full overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeLightbox}
           >
             <motion.div
-              className="relative max-w-4xl w-full max-h-[90vh]"
+              className="relative max-w-4xl w-full max-w-[95vw] max-h-[90vh] mx-auto"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}

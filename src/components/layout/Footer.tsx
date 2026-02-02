@@ -16,8 +16,8 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-beige-800 text-beige-50 py-10 xs:py-12 sm:py-14 md:py-16" role="contentinfo">
-      <div className="container mx-auto px-3 xs:px-4">
+    <footer className="bg-beige-800 text-beige-50 py-10 xs:py-12 sm:py-14 md:py-16 w-full max-w-full overflow-x-hidden" role="contentinfo">
+      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 xs:gap-10 sm:gap-12 mb-8 xs:mb-10 sm:mb-12">
           {/* О нас */}
           <motion.div
