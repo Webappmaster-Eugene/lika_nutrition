@@ -1,0 +1,15 @@
+<svg width="400" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f1eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8dfd3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#grad1)"/>
+  <rect x="50" y="100" width="300" height="400" rx="10" fill="#9d8266" opacity="0.2" stroke="#7d6851" stroke-width="2"/>
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="20" fill="#7d6851" text-anchor="middle" font-weight="bold">Отзыв клиента</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="16" fill="#9d8266" text-anchor="middle">★★★★★</text>
+  <text x="200" y="320" font-family="Arial, sans-serif" font-size="14" fill="#7d6851" text-anchor="middle">Положительный результат</text>
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="14" fill="#7d6851" text-anchor="middle">и улучшение</text>
+  <text x="200" y="380" font-family="Arial, sans-serif" font-size="14" fill="#7d6851" text-anchor="middle">самочувствия</text>
+</svg>

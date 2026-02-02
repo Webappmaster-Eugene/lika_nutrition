@@ -1,0 +1,9 @@
+export interface Service {
+  id: number
+  title: string
+  description: string
+  price: string
+  features: string[]
+  image?: string
+  slug?: string
+}
