@@ -157,6 +157,7 @@ export function getOrganizationStructuredData(): StructuredDataOrganization {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
+    sameAs: [siteConfig.social.telegram, siteConfig.social.whatsapp].filter(Boolean),
   }
 }
 
@@ -331,18 +332,33 @@ export function getAggregateRatingStructuredData(
   }
 }
 
+/** Базовый URL с завершающим слэшем (для совместимости с trailingSlash) */
+function getBaseUrlWithSlash(): string {
+  const url = siteConfig.url
+  return url.endsWith('/') ? url : `${url}/`
+}
+
 export function getBreadcrumbListStructuredData(
   items: Array<{ name: string; url?: string }>
 ): StructuredDataBreadcrumbList {
+  const baseUrl = getBaseUrlWithSlash()
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      ...(item.url && { item: `${siteConfig.url}${item.url.startsWith('http') ? '' : item.url}` }),
-    })),
+    itemListElement: items.map((item, index) => {
+      let itemUrl: string | undefined
+      if (item.url) {
+        itemUrl = item.url.startsWith('http')
+          ? (item.url.endsWith('/') ? item.url : `${item.url.replace(/\/$/, '')}/`)
+          : baseUrl + (item.url.startsWith('/') ? item.url.slice(1) : item.url)
+      }
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        ...(itemUrl && { item: itemUrl }),
+      }
+    }),
   }
 }
 
@@ -361,5 +377,26 @@ export function getWebSiteStructuredData(): StructuredDataWebSite {
       },
       'query-input': 'required name=search_term_string',
     },
+  }
+}
+
+/** Единый JSON-LD граф для layout (рекомендация Google для нескольких схем на странице) */
+export function getStructuredDataGraph(): {
+  '@context': string
+  '@graph': Array<
+    | StructuredDataOrganization
+    | StructuredDataPerson
+    | StructuredDataLocalBusiness
+    | StructuredDataWebSite
+  >
+} {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      getOrganizationStructuredData(),
+      getPersonStructuredData(),
+      getLocalBusinessStructuredData(),
+      getWebSiteStructuredData(),
+    ],
   }
 }

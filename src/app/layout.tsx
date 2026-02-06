@@ -3,12 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import {
-  getOrganizationStructuredData,
-  getPersonStructuredData,
-  getLocalBusinessStructuredData,
-  getWebSiteStructuredData,
-} from '@/lib/utils/seo'
+import { META_DESCRIPTION_SHORT } from '@/lib/constants/seo'
+import { getStructuredDataGraph } from '@/lib/utils/seo'
 
 const inter = Inter({ subsets: ['cyrillic', 'latin'] })
 
@@ -18,7 +14,7 @@ export const metadata: Metadata = {
     default: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
     template: '%s | Нутрициолог Лика'
   },
-  description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
+  description: META_DESCRIPTION_SHORT,
   keywords: [
     'превентивный нутрициолог',
     'нутрициолог онлайн',
@@ -53,10 +49,10 @@ export const metadata: Metadata = {
     url: 'https://likanutrition.ru',
     siteName: 'Нутрициолог Лика',
     title: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
-    description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
+    description: META_DESCRIPTION_SHORT,
     images: [
       {
-        url: 'https://likanutrition.ru/images/og-image.jpg',
+        url: '/images/about/nutritionist.jpg',
         width: 1200,
         height: 630,
         alt: 'Превентивный нутрициолог Лика - Восстановление энергии и ЖКТ',
@@ -66,8 +62,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
-    description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
-    images: ['https://likanutrition.ru/images/twitter-card.jpg'],
+    description: META_DESCRIPTION_SHORT,
+    images: ['/images/about/nutritionist.jpg'],
   },
   alternates: {
     canonical: 'https://likanutrition.ru',
@@ -84,8 +80,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || 'your-google-verification-code',
-    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION }),
+    ...(process.env.NEXT_PUBLIC_YANDEX_VERIFICATION && { yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION }),
   },
   category: 'Health & Wellness',
   classification: 'Nutritionist Services',
@@ -106,10 +102,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const organizationData = getOrganizationStructuredData()
-  const personData = getPersonStructuredData()
-  const localBusinessData = getLocalBusinessStructuredData()
-  const webSiteData = getWebSiteStructuredData()
+  const structuredDataGraph = getStructuredDataGraph()
 
   return (
     <html lang="ru">
@@ -122,22 +115,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         
-        {/* Структурированные данные */}
+        {/* Структурированные данные (единый @graph по рекомендации Google) */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph) }}
         />
         
         {/* Referrer Policy - единственный security meta-тег, который работает в HTML */}

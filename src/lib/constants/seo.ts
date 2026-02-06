@@ -1,3 +1,7 @@
+/** Короткое описание для meta description (150–160 символов для сниппета) */
+export const META_DESCRIPTION_SHORT =
+  'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн.'
+
 export const siteConfig = {
   name: 'Нутрициолог Лика',
   url: 'https://likanutrition.ru',
@@ -33,7 +37,7 @@ export const siteConfig = {
     description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
     email: 'dd.wellness@yandex.ru',
     telephone: '+7 999 604-94-65',
-    image: 'https://likanutrition.ru/images/nutritionist.jpg',
+    image: 'https://likanutrition.ru/images/about/nutritionist.jpg',
   },
   business: {
     type: 'ProfessionalService',

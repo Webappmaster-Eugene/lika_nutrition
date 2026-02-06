@@ -14,10 +14,11 @@ import StructuredData from '@/components/seo/StructuredData'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import { getBreadcrumbListStructuredData } from '@/lib/utils/seo'
 import type { Metadata } from 'next'
+import { META_DESCRIPTION_SHORT } from '@/lib/constants/seo'
 
 export const metadata: Metadata = {
   title: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
-  description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
+  description: META_DESCRIPTION_SHORT,
   keywords: [
     'превентивный нутрициолог',
     'нутрициолог онлайн',
