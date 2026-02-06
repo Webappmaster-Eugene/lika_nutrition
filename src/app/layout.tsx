@@ -13,7 +13,7 @@ import {
 const inter = Inter({ subsets: ['cyrillic', 'latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://lika-nutrition.ru'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://likanutrition.ru'),
   title: {
     default: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
     template: '%s | Нутрициолог Лика'
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://lika-nutrition.ru',
+    url: 'https://likanutrition.ru',
     siteName: 'Нутрициолог Лика',
     title: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
     description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
     images: [
       {
-        url: 'https://lika-nutrition.ru/images/og-image.jpg',
+        url: 'https://likanutrition.ru/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Превентивный нутрициолог Лика - Восстановление энергии и ЖКТ',
@@ -67,10 +67,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Превентивный нутрициолог Лика | Восстановление энергии и ЖКТ',
     description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
-    images: ['https://lika-nutrition.ru/images/twitter-card.jpg'],
+    images: ['https://likanutrition.ru/images/twitter-card.jpg'],
   },
   alternates: {
-    canonical: 'https://lika-nutrition.ru',
+    canonical: 'https://likanutrition.ru',
   },
   robots: {
     index: true,

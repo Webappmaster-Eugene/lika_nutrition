@@ -63,7 +63,7 @@ docker-compose down
 ### Шаг 3: Настройка переменных окружения
 
 **Обязательные переменные:**
-- `NEXT_PUBLIC_SITE_URL` = `https://lika-nutrition.ru` (URL вашего сайта)
+- `NEXT_PUBLIC_SITE_URL` = `https://likanutrition.ru` (URL вашего сайта)
 
 **Опциональные переменные:**
 - `NEXT_PUBLIC_GOOGLE_VERIFICATION` = (код верификации Google Search Console)
@@ -86,9 +86,9 @@ docker-compose down
 
 ## 🔍 Проверка после деплоя
 
-1. **Основной сайт**: `https://lika-nutrition.ru/`
-2. **robots.txt**: `https://lika-nutrition.ru/robots.txt`
-3. **sitemap.xml**: `https://lika-nutrition.ru/sitemap.xml`
+1. **Основной сайт**: `https://likanutrition.ru/`
+2. **robots.txt**: `https://likanutrition.ru/robots.txt`
+3. **sitemap.xml**: `https://likanutrition.ru/sitemap.xml`
 4. **Security headers**: проверьте через https://securityheaders.com/
 5. **Изображения**: убедитесь, что все изображения загружаются
 

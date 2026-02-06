@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Нутрициолог Лика',
-  url: 'https://lika-nutrition.ru',
+  url: 'https://likanutrition.ru',
   description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
   keywords: [
     'превентивный нутрициолог',
@@ -33,7 +33,7 @@ export const siteConfig = {
     description: 'Превентивный нутрициолог Лика. Восстановление энергии, нормализация ЖКТ, здоровый вес без диет. Индивидуальные программы питания, консультации онлайн. Работа с дефицитами витаминов, анемией, хронической усталостью.',
     email: 'dd.wellness@yandex.ru',
     telephone: '+7 999 604-94-65',
-    image: 'https://lika-nutrition.ru/images/nutritionist.jpg',
+    image: 'https://likanutrition.ru/images/nutritionist.jpg',
   },
   business: {
     type: 'ProfessionalService',

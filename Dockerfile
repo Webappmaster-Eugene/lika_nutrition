@@ -14,7 +14,7 @@ RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 COPY . .
 
 # Установка переменных окружения для сборки (если нужно)
-ARG NEXT_PUBLIC_SITE_URL=https://lika-nutrition.ru
+ARG NEXT_PUBLIC_SITE_URL=https://likanutrition.ru
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 
 # Сборка приложения

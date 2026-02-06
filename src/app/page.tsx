@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     'нормализация веса',
   ],
   alternates: {
-    canonical: 'https://lika-nutrition.ru',
+    canonical: 'https://likanutrition.ru',
   },
 }
 
 export default function HomePage() {
   const breadcrumbItems = [
-    { name: 'Главная', url: 'https://lika-nutrition.ru' },
+    { name: 'Главная', url: 'https://likanutrition.ru' },
   ]
 
   return (
