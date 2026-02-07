@@ -15,11 +15,16 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    networks:
+      - dokploy-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.lika-nutrition.rule=Host(`likanutrition.ru`)"
-      - "traefik.http.routers.lika-nutrition.entrypoints=web"
       - "traefik.http.routers.lika-nutrition.entrypoints=websecure"
       - "traefik.http.routers.lika-nutrition.tls.certresolver=letsencrypt"
       - "traefik.http.services.lika-nutrition.loadbalancer.server.port=80"
       - "com.dokploy.service.name=lika-nutrition"
+
+networks:
+  dokploy-network:
+    external: true
