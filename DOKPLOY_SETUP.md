@@ -158,8 +158,26 @@ docker-compose down
 - С вашего компьютера: `curl -v https://likanutrition.ru/` — смотрите, на какой IP идёт запрос (должен быть IP сервера Dokploy) и какой ответ (timeout, connection refused, 502 и т.д.).
 
 ### Проблема: 502 Bad Gateway на https://likanutrition.ru/
-**Причина:** Traefik получает запрос по домену, но не может достучаться до контейнера — приложение и Traefik в разных Docker-сетях. Контейнер должен быть в сети **dokploy-network**, в которой работает Traefik в Dokploy.
-**Решение:** В `docker-compose.yml` сервис должен быть подключён к сети `dokploy-network`, а в конце файла задано: `networks: dokploy-network: external: true`. Без этого Traefik не видит контейнер и возвращает 502. После правок сделайте повторный деплой и подождите 10–30 секунд (генерация сертификата Let's Encrypt).
+
+**Причина:** Traefik получает запрос по домену, но не может достучаться до контейнера. В Dokploy есть известный баг ([issue #3435](https://github.com/Dokploy/dokploy/issues/3435)): при деплое **Docker Compose** контейнер оказывается только в сети проекта (например `likanutrition-seofrontend-mncup0_default`), **а не в dokploy-network**, даже если в `docker-compose.yml` указаны `networks: - dokploy-network` и `networks: dokploy-network: external: true`. Traefik смотрит только в `dokploy-network`, поэтому не находит IP контейнера и отдаёт 502.
+
+**Workaround (после каждого деплоя):** на сервере Dokploy вручную подключите контейнер к сети:
+
+1. Узнайте имя контейнера:
+   ```bash
+   docker ps --format '{{.Names}}' | grep lika-nutrition
+   ```
+   Обычно это что-то вроде `likanutrition-seofrontend-mncup0-lika-nutrition-1`.
+
+2. Подключите контейнер к dokploy-network:
+   ```bash
+   docker network connect dokploy-network <имя_контейнера>
+   ```
+   Пример: `docker network connect dokploy-network likanutrition-seofrontend-mncup0-lika-nutrition-1`
+
+После этого https://likanutrition.ru/ должен открываться без 502.
+
+**Альтернатива:** настройка домена через вкладку **Domains** в UI Dokploy (в приложении seo-frontend) — для некоторых типов деплоя Dokploy создаёт динамический конфиг Traefik и маршрутизация может работать без ручного подключения к сети. Проверьте по [документации Dokploy Domains](https://docs.dokploy.com/docs/core/docker-compose/domains).
 
 ### Проблема: `Bind for 0.0.0.0:3000 failed: port is already allocated`
 **Причина:** На хосте уже занят порт, который пытается занять контейнер. В текущей конфигурации используется порт **3080** (не 3000), поэтому такая ошибка может появиться, если в `docker-compose.yml` или в настройках Dokploy указан порт, занятый другим сервисом.

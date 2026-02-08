@@ -19,6 +19,7 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
       - "traefik.http.routers.lika-nutrition.rule=Host(`likanutrition.ru`)"
       - "traefik.http.routers.lika-nutrition.entrypoints=websecure"
       - "traefik.http.routers.lika-nutrition.tls.certresolver=letsencrypt"
