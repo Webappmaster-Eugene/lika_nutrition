@@ -42,7 +42,7 @@ export default function Testimonials() {
         id="testimonials"
         className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white w-full max-w-full overflow-x-hidden"
       >
-        <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden w-full max-w-full">
+        <div className="container mx-auto w-full max-w-full overflow-x-hidden">
           <div className="max-w-7xl mx-auto w-full">
             {/* Заголовок */}
             <motion.div

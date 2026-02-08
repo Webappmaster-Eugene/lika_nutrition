@@ -39,7 +39,7 @@ export default function Header() {
           : 'bg-beige-50/80 backdrop-blur-sm'
       }`}
     >
-      <div className="container mx-auto px-3 xs:px-4 py-3 xs:py-4 w-full max-w-full">
+      <div className="container mx-auto py-3 xs:py-4 w-full max-w-full">
         <div className="flex items-center justify-between">
           <SmoothScrollLink
             href="#hero"

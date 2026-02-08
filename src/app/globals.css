@@ -57,10 +57,10 @@ img, video, iframe, embed, object {
     touch-action: manipulation;
   }
   
-  /* Предотвращение переполнения контейнеров */
+  /* Боковые отступы контейнера (минимум 1rem для видимого зазора) */
   .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 100%;
   }
   
@@ -118,11 +118,31 @@ img, video, iframe, embed, object {
 }
 
 @layer components {
-  /* Исправление для контейнеров на мобильных */
+  /* Единый контейнер с адаптивными боковыми отступами */
   .container {
     @apply w-full max-w-full;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
   .prose {
     @apply text-beige-700;
   }

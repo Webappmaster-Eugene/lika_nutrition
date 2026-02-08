@@ -37,7 +37,7 @@ export default function Stats() {
       id="stats"
       className="py-12 xs:py-16 sm:py-20 md:py-24 bg-gradient-to-br from-beige-600 to-beige-700 text-white"
     >
-      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden">
+      <div className="container mx-auto w-full max-w-full overflow-x-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-8 xs:mb-12 sm:mb-16"

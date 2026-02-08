@@ -50,7 +50,7 @@ export default function FAQ() {
         id="faq"
         className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
       >
-        <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden">
+        <div className="container mx-auto w-full max-w-full overflow-x-hidden">
           <div className="max-w-4xl mx-auto">
             <motion.div
               className="text-center mb-8 xs:mb-12 sm:mb-16"

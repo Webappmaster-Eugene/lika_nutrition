@@ -54,7 +54,7 @@ export default function Breadcrumbs({ items, showVisual = false }: BreadcrumbsPr
     <>
       <StructuredData data={structuredData} />
       {showVisual && (
-        <nav aria-label="Хлебные крошки" className="container mx-auto px-4 py-4">
+        <nav aria-label="Хлебные крошки" className="container mx-auto py-4">
           <ol className="flex items-center gap-2 text-sm text-beige-600">
             {breadcrumbItems.map((item, index) => (
               <li key={index} className="flex items-center gap-2">

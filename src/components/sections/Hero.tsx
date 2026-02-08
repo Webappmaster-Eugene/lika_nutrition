@@ -39,7 +39,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-3 xs:px-4 w-full max-w-full overflow-x-hidden py-12 xs:py-16 sm:py-20 relative z-10">
+      <div className="container mx-auto w-full max-w-full overflow-x-hidden py-12 xs:py-16 sm:py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 lg:gap-12 items-center max-w-7xl mx-auto w-full">
           {/* Левая часть - Текст */}
           <motion.div
