@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 
 const navItems = [
   { href: '#about', label: 'О специалисте' },
+  { href: '#achievements', label: 'Достижения' },
   { href: '#nutriciology', label: 'О нутрициологии' },
   { href: '#services', label: 'Услуги' },
   { href: '#testimonials', label: 'Отзывы' },

@@ -18,8 +18,9 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items, showVisual = false }: BreadcrumbsProps) {
-  const pathname = usePathname()
-  
+  // Подписка на смену маршрута (на некоторых страницах компонент используется повторно).
+  usePathname()
+
   // Для одностраничного сайта создаем виртуальные breadcrumbs
   const defaultItems: BreadcrumbItem[] = [
     { name: 'Главная', url: siteConfig.url },
@@ -31,6 +32,7 @@ export default function Breadcrumbs({ items, showVisual = false }: BreadcrumbsPr
     if (hash) {
       const sectionNames: Record<string, string> = {
         '#about': 'О специалисте',
+        '#achievements': 'Достижения',
         '#nutriciology': 'О нутрициологии',
         '#services': 'Услуги',
         '#testimonials': 'Отзывы',

@@ -1,5 +1,6 @@
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
+import Achievements from '@/components/sections/Achievements'
 import WhatIsNutriciology from '@/components/sections/WhatIsNutriciology'
 import HowICanHelp from '@/components/sections/HowICanHelp'
 import Stats from '@/components/sections/Stats'
@@ -10,9 +11,7 @@ import Testimonials from '@/components/sections/Testimonials'
 import FAQ from '@/components/sections/FAQ'
 import CTA from '@/components/sections/CTA'
 import Contact from '@/components/sections/Contact'
-import StructuredData from '@/components/seo/StructuredData'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
-import { getBreadcrumbListStructuredData } from '@/lib/utils/seo'
 import type { Metadata } from 'next'
 import { META_DESCRIPTION_SHORT } from '@/lib/constants/seo'
 
@@ -59,6 +58,7 @@ export default function HomePage() {
       <Breadcrumbs items={breadcrumbItems} />
       <Hero />
       <About />
+      <Achievements />
       <WhatIsNutriciology />
       <HowICanHelp />
       <Stats />
