@@ -59,29 +59,36 @@ export default function FAQ() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
+              <h2 className="font-serif text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
                 Часто задаваемые вопросы
               </h2>
-              <p className="text-base xs:text-lg text-sage-700 max-w-3xl mx-auto">
+              <p className="text-base xs:text-lg text-sage-600 max-w-3xl mx-auto">
                 Ответы на самые популярные вопросы
               </p>
-              <div className="w-24 h-1 bg-sage-600 mx-auto rounded-full mt-6" />
+              <div className="flex items-center justify-center gap-3 mt-6">
+                <div className="w-12 h-px bg-accent-400" />
+                <div className="w-2 h-2 rounded-full bg-accent-400" />
+                <div className="w-12 h-px bg-accent-400" />
+              </div>
             </motion.div>
 
             <div className="space-y-3 xs:space-y-4">
               {faqItems.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-xl xs:rounded-2xl overflow-hidden border border-beige-200"
+                  className={`bg-white rounded-xl xs:rounded-2xl overflow-hidden border transition-all duration-300 ${
+                    openIndex === index
+                      ? 'border-accent-300 shadow-md'
+                      : 'border-beige-200 hover:border-sage-300'
+                  }`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
                 >
                   <button
                     onClick={() => toggleItem(index)}
-                    className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-sage-50 transition-colors min-h-touch"
+                    className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-sage-50/50 transition-colors min-h-touch"
                   >
                     <span className="text-sm xs:text-base sm:text-lg font-semibold text-sage-900 pr-3 xs:pr-4">
                       {item.question}
@@ -89,9 +96,11 @@ export default function FAQ() {
                     <motion.div
                       animate={{ rotate: openIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
+                      className={`flex-shrink-0 transition-colors duration-300 ${
+                        openIndex === index ? 'text-accent-500' : 'text-sage-500'
+                      }`}
                     >
-                      <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6 text-sage-600" />
+                      <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6" />
                     </motion.div>
                   </button>
                   <AnimatePresence>
@@ -103,7 +112,7 @@ export default function FAQ() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 xs:px-6 pb-4 xs:pb-5 text-sm xs:text-base text-sage-700 leading-relaxed">
+                        <div className="px-4 xs:px-6 pb-4 xs:pb-5 text-sm xs:text-base text-sage-600 leading-relaxed">
                           {item.answer}
                         </div>
                       </motion.div>

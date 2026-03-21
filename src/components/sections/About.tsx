@@ -19,28 +19,36 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
+            <h2 className="font-serif text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
               Будем знакомы!
             </h2>
-            <div className="w-24 h-1 bg-sage-600 mx-auto rounded-full" />
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-12 h-px bg-accent-400" />
+              <div className="w-2 h-2 rounded-full bg-accent-400" />
+              <div className="w-12 h-px bg-accent-400" />
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xs:gap-10 lg:gap-14 items-center">
-            {/* Фото */}
+            {/* Фото с декоративной рамкой */}
             <motion.div
-              className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl"
+              className="relative"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Image
-                src="/images/photos/photo-2.jpg"
-                alt="Лика Надточеева — нутрициолог"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              <div className="absolute -inset-3 border-2 border-sage-300/40 rounded-3xl" />
+              <div className="absolute -inset-1 border border-accent-300/30 rounded-2xl" />
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/photos/photo-2.jpg"
+                  alt="Лика Надточеева — нутрициолог"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </motion.div>
 
             {/* Текст */}
@@ -66,8 +74,8 @@ export default function About() {
               <p className="text-sm xs:text-base text-sage-700 leading-relaxed font-medium">
                 Сегодня я помогаю женщинам вернуть ресурс, энергию и ощущение опоры в теле — без давления и борьбы с собой.
               </p>
-              <div className="pt-2">
-                <p className="text-sage-600 italic text-sm xs:text-base">
+              <div className="pt-2 border-l-4 border-accent-400 pl-4">
+                <p className="text-sage-600 italic text-sm xs:text-base font-serif">
                   &laquo;Потому что здоровье — это не про контроль, а про поддержку и понимание.&raquo;
                 </p>
               </div>

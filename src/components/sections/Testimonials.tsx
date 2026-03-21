@@ -56,13 +56,17 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
+              <h2 className="font-serif text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
                 Отзывы
               </h2>
-              <p className="text-base xs:text-lg text-sage-700 max-w-3xl mx-auto">
+              <p className="text-base xs:text-lg text-sage-600 max-w-3xl mx-auto">
                 Реальные истории и результаты моих клиентов
               </p>
-              <div className="w-24 h-1 bg-sage-600 mx-auto rounded-full mt-6" />
+              <div className="flex items-center justify-center gap-3 mt-6">
+                <div className="w-12 h-px bg-accent-400" />
+                <div className="w-2 h-2 rounded-full bg-accent-400" />
+                <div className="w-12 h-px bg-accent-400" />
+              </div>
             </motion.div>
 
             {/* Карусель */}
@@ -72,42 +76,45 @@ export default function Testimonials() {
                 <div className="flex items-center justify-center gap-4">
                   <button
                     onClick={goPrev}
-                    className="flex-shrink-0 w-12 h-12 bg-sage-100 hover:bg-sage-200 rounded-full flex items-center justify-center transition-colors min-h-touch min-w-touch"
+                    className="flex-shrink-0 w-12 h-12 bg-sage-100 hover:bg-sage-200 rounded-full flex items-center justify-center transition-colors min-h-touch min-w-touch border border-sage-200"
                     aria-label="Предыдущий отзыв"
                   >
-                    <ChevronLeft className="w-6 h-6 text-sage-700" />
+                    <ChevronLeft className="w-6 h-6 text-sage-600" />
                   </button>
 
-                  {/* Слайд */}
-                  <div className="relative w-full max-w-lg aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
-                    <AnimatePresence mode="wait" custom={direction}>
-                      <motion.div
-                        key={currentIndex}
-                        custom={direction}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="absolute inset-0"
-                      >
-                        <Image
-                          src={testimonials[currentIndex].screenshot}
-                          alt={`Отзыв клиента о консультации нутрициолога Лики Надточеевой`}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 500px"
-                        />
-                      </motion.div>
-                    </AnimatePresence>
+                  {/* Слайд с декоративной рамкой */}
+                  <div className="relative">
+                    <div className="absolute -inset-2 border-2 border-accent-300/30 rounded-3xl" />
+                    <div className="relative w-full max-w-lg aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+                      <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                          key={currentIndex}
+                          custom={direction}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={testimonials[currentIndex].screenshot}
+                            alt={`Отзыв клиента о консультации нутрициолога Лики Надточеевой`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 500px"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
                   </div>
 
                   <button
                     onClick={goNext}
-                    className="flex-shrink-0 w-12 h-12 bg-sage-100 hover:bg-sage-200 rounded-full flex items-center justify-center transition-colors min-h-touch min-w-touch"
+                    className="flex-shrink-0 w-12 h-12 bg-sage-100 hover:bg-sage-200 rounded-full flex items-center justify-center transition-colors min-h-touch min-w-touch border border-sage-200"
                     aria-label="Следующий отзыв"
                   >
-                    <ChevronRight className="w-6 h-6 text-sage-700" />
+                    <ChevronRight className="w-6 h-6 text-sage-600" />
                   </button>
                 </div>
 
@@ -120,17 +127,17 @@ export default function Testimonials() {
                         setDirection(index > currentIndex ? 1 : -1)
                         setCurrentIndex(index)
                       }}
-                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
                         index === currentIndex
-                          ? 'bg-sage-700 w-6'
-                          : 'bg-sage-300 hover:bg-sage-400'
+                          ? 'bg-accent-400 w-6'
+                          : 'bg-sage-300 hover:bg-sage-400 w-2.5'
                       }`}
                       aria-label={`Отзыв ${index + 1}`}
                     />
                   ))}
                 </div>
 
-                <p className="text-center text-sm text-sage-600 mt-4">
+                <p className="text-center text-sm text-sage-500 mt-4">
                   Фрагменты отзывов. Личность клиентов не раскрывается.
                 </p>
               </div>

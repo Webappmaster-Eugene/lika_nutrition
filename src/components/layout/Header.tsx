@@ -52,7 +52,7 @@ export default function Header() {
               className="rounded-full"
               priority
             />
-            <span className="hidden sm:inline text-lg font-bold text-sage-800">
+            <span className="hidden sm:inline text-lg font-serif font-bold text-sage-800">
               Лика Надточеева
             </span>
           </SmoothScrollLink>
@@ -63,10 +63,10 @@ export default function Header() {
               <SmoothScrollLink
                 key={item.href}
                 href={item.href}
-                className="text-sage-800 hover:text-sage-600 font-medium transition-colors relative group"
+                className="text-sage-800 hover:text-accent-500 font-medium transition-colors relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-sage-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 group-hover:w-full transition-all duration-300" />
               </SmoothScrollLink>
             ))}
             <SocialLinks />
@@ -89,8 +89,8 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden mt-3 xs:mt-4 pb-3 xs:pb-4 border-t border-beige-200 pt-3 xs:pt-4"
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="md:hidden mt-3 xs:mt-4 pb-3 xs:pb-4 border-t border-beige-300 pt-3 xs:pt-4"
             >
               <nav className="flex flex-col gap-2 xs:gap-3 sm:gap-4">
                 {navItems.map((item, index) => (
@@ -98,12 +98,12 @@ export default function Header() {
                     key={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.08 }}
                   >
                     <SmoothScrollLink
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-sage-800 hover:text-sage-600 font-medium block py-2.5 xs:py-3 min-h-touch text-sm xs:text-base"
+                      className="text-sage-800 hover:text-accent-500 font-medium block py-2.5 xs:py-3 min-h-touch text-sm xs:text-base transition-colors"
                     >
                       {item.label}
                     </SmoothScrollLink>

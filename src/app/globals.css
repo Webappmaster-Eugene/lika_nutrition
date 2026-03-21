@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 51, 61, 41;
+  --color-sage-600: #657554;
+  --color-sage-400: #8E9E7B;
+  --color-beige-300: #D4C9AF;
+  --color-cream: #F5F0E4;
+  --color-accent: #DAA520;
+  --color-accent-dark: #B8860B;
 }
 
 * {
@@ -21,7 +25,7 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #F5F0E6;
+  background: #F5F0E4;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

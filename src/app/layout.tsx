@@ -1,11 +1,21 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import { META_DESCRIPTION_SHORT } from '@/lib/constants/seo'
 import { getStructuredDataGraph } from '@/lib/utils/seo'
 
-const inter = Inter({ subsets: ['cyrillic', 'latin'] })
+const inter = Inter({
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://likanutrition.ru'),
@@ -106,17 +116,13 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph) }}
         />
         <meta name="referrer" content="origin-when-cross-origin" />
       </head>
-      <body className={`${inter.className} w-full max-w-full overflow-x-hidden`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans w-full max-w-full overflow-x-hidden`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-sage-700 focus:text-white">
           Перейти к основному содержимому
         </a>

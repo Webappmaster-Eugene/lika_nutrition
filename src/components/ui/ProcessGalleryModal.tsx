@@ -62,7 +62,7 @@ export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProp
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 xs:p-4"
+        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 xs:p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -121,11 +121,27 @@ export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProp
             </AnimatePresence>
           </div>
 
-          <div className="mt-4 text-center text-white">
-            <p className="text-sm text-white/60">
-              {currentIndex + 1} из {processImages.length}
-            </p>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            {processImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setDirection(index > currentIndex ? 1 : -1)
+                  setCurrentIndex(index)
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-accent-400 w-6'
+                    : 'bg-white/40 hover:bg-white/60 w-2'
+                }`}
+                aria-label={`Изображение ${index + 1}`}
+              />
+            ))}
           </div>
+
+          <p className="text-center text-sm text-white/60 mt-2">
+            {currentIndex + 1} из {processImages.length}
+          </p>
         </motion.div>
       </motion.div>
     </AnimatePresence>

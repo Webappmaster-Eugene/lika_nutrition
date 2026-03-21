@@ -7,6 +7,15 @@ import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
 import { processSteps } from '@/lib/content/process'
 import { Diamond } from 'lucide-react'
 
+const diamondColors = [
+  'bg-sage-600',
+  'bg-sage-500',
+  'bg-accent-400',
+  'bg-sage-500',
+  'bg-sage-600',
+  'bg-accent-400',
+]
+
 export default function Process() {
   return (
     <AnimatedSection
@@ -23,11 +32,11 @@ export default function Process() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-beige-50 p-5 xs:p-6 sm:p-8 rounded-2xl border border-beige-200 sticky top-24">
-                <h3 className="text-xl xs:text-2xl font-bold text-sage-900 mb-2">
+              <div className="bg-beige-50 p-5 xs:p-6 sm:p-8 rounded-2xl border border-beige-300 sticky top-24">
+                <h3 className="text-xl xs:text-2xl font-serif font-bold text-sage-900 mb-2">
                   Запишитесь на бесплатную консультацию
                 </h3>
-                <p className="text-sm text-sage-700 mb-5">
+                <p className="text-sm text-sage-600 mb-5">
                   Я подберу для вас оптимальную программу, исходя из ваших потребностей и индивидуальных особенностей
                 </p>
                 <ConsultationForm />
@@ -41,16 +50,16 @@ export default function Process() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-sage-900 mb-2">
+              <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-sage-900 mb-2">
                 Как проходит работа со мной
               </h2>
-              <p className="text-base xs:text-lg text-sage-700 mb-8">
+              <p className="text-base xs:text-lg text-sage-600 mb-8">
                 и что Вы получаете на выходе?
               </p>
 
               <div className="space-y-6 relative">
                 {/* Вертикальная линия */}
-                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-sage-200 hidden sm:block" />
+                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-gradient-to-b from-sage-300 via-accent-300 to-sage-300 hidden sm:block" />
 
                 {processSteps.map((step, index) => (
                   <motion.div
@@ -62,18 +71,18 @@ export default function Process() {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                   >
                     <div className="flex-shrink-0 relative z-10">
-                      <div className="w-10 h-10 bg-sage-700 rounded-lg rotate-45 flex items-center justify-center shadow-md">
+                      <div className={`w-10 h-10 ${diamondColors[index % diamondColors.length]} rounded-lg rotate-45 flex items-center justify-center shadow-md`}>
                         <Diamond className="w-4 h-4 text-white -rotate-45" />
                       </div>
                     </div>
                     <div className="pt-1">
-                      <div className="text-xs font-bold text-sage-600 uppercase tracking-wider mb-1">
+                      <div className="inline-block text-xs font-bold text-white bg-sage-600 uppercase tracking-wider mb-2 px-3 py-1 rounded-full">
                         Этап {step.stage}
                       </div>
                       <h3 className="text-base xs:text-lg font-semibold text-sage-900 mb-1">
                         {step.title}
                       </h3>
-                      <p className="text-sm xs:text-base text-sage-700 leading-relaxed">
+                      <p className="text-sm xs:text-base text-sage-600 leading-relaxed">
                         {step.description}
                       </p>
                     </div>
@@ -90,7 +99,7 @@ export default function Process() {
               >
                 <SmoothScrollLink
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-sage-700 text-white rounded-full font-semibold hover:bg-sage-800 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
+                  className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
                 >
                   Записаться на консультацию
                 </SmoothScrollLink>
