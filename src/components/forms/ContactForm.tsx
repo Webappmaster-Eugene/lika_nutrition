@@ -21,7 +21,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!privacyAccepted) return
-    
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -30,7 +30,7 @@ export default function ContactForm() {
       setSubmitStatus('success')
       setFormData({ name: '', phone: '', email: '', message: '' })
       setPrivacyAccepted(false)
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -56,7 +56,7 @@ export default function ContactForm() {
           required
         />
       </div>
-      
+
       <FormField
         label="Email"
         name="email"
@@ -65,7 +65,7 @@ export default function ContactForm() {
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         required
       />
-      
+
       <FormField
         label="Ваш вопрос или сообщение"
         name="message"
@@ -74,62 +74,64 @@ export default function ContactForm() {
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         required
       />
-      
-      <div className="flex items-start gap-3 p-4 bg-beige-50 rounded-xl border-2 border-beige-200 hover:border-beige-300 transition-colors">
+
+      <div className="flex items-start gap-3 p-4 bg-beige-50 rounded-xl border-2 border-beige-200 hover:border-sage-300 transition-colors">
         <input
           type="checkbox"
           id="privacy"
           checked={privacyAccepted}
           onChange={(e) => setPrivacyAccepted(e.target.checked)}
           required
-          className="w-5 h-5 xs:w-6 xs:h-6 text-beige-600 border-2 border-beige-300 rounded-md focus:ring-2 focus:ring-beige-500 focus:ring-offset-2 mt-0.5 flex-shrink-0 cursor-pointer transition-all"
+          className="w-5 h-5 xs:w-6 xs:h-6 text-sage-700 border-2 border-beige-300 rounded-md focus:ring-2 focus:ring-sage-500 focus:ring-offset-2 mt-0.5 flex-shrink-0 cursor-pointer transition-all accent-sage-700"
         />
-        <label htmlFor="privacy" className="text-sm xs:text-base text-beige-700 leading-relaxed cursor-pointer flex-1">
-          Я согласен с{' '}
-          <a href="/privacy" className="text-beige-600 hover:text-beige-700 underline font-medium">
-            политикой конфиденциальности
+        <label htmlFor="privacy" className="text-sm xs:text-base text-sage-800 leading-relaxed cursor-pointer flex-1">
+          Отправляя свои персональные данные, Вы соглашаетесь с{' '}
+          <a href="/privacy" className="text-sage-700 hover:text-sage-800 underline font-medium">
+            Положением о персональных данных
           </a>
         </label>
       </div>
 
-      <AnimatePresence mode="wait">
-        {submitStatus === 'success' && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="p-4 bg-green-50 border-2 border-green-200 rounded-xl flex items-start gap-3"
-          >
-            <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm xs:text-base font-semibold text-green-800 mb-1">
-                Спасибо! Ваше сообщение отправлено.
-              </p>
-              <p className="text-sm text-green-700">
-                Я свяжусь с вами в ближайшее время.
-              </p>
-            </div>
-          </motion.div>
-        )}
-        {submitStatus === 'error' && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="p-4 bg-red-50 border-2 border-red-200 rounded-xl flex items-start gap-3"
-          >
-            <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm xs:text-base font-semibold text-red-800 mb-1">
-                Произошла ошибка
-              </p>
-              <p className="text-sm text-red-700">
-                Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую через Telegram.
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div aria-live="polite" aria-atomic="true">
+        <AnimatePresence mode="wait">
+          {submitStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="p-4 bg-sage-50 border-2 border-sage-200 rounded-xl flex items-start gap-3"
+            >
+              <CheckCircle2 className="w-5 h-5 text-sage-700 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm xs:text-base font-semibold text-sage-900 mb-1">
+                  Спасибо! Ваше сообщение отправлено.
+                </p>
+                <p className="text-sm text-sage-800">
+                  Я свяжусь с вами в ближайшее время.
+                </p>
+              </div>
+            </motion.div>
+          )}
+          {submitStatus === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="p-4 bg-red-50 border-2 border-red-200 rounded-xl flex items-start gap-3"
+            >
+              <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm xs:text-base font-semibold text-red-800 mb-1">
+                  Произошла ошибка
+                </p>
+                <p className="text-sm text-red-700">
+                  Пожалуйста, попробуйте ещё раз или свяжитесь со мной напрямую через Telegram.
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       <motion.div
         whileHover={{ scale: 1.02 }}
@@ -138,7 +140,7 @@ export default function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting || !privacyAccepted}
-          className="w-full py-4 xs:py-5 text-base xs:text-lg font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-beige-600 to-beige-700 hover:from-beige-700 hover:to-beige-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 xs:py-5 text-base xs:text-lg font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center gap-2">

@@ -2,17 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
 import SocialLinks from '@/components/ui/SocialLinks'
 import { Menu, X } from 'lucide-react'
 
 const navItems = [
-  { href: '#about', label: 'О специалисте' },
-  { href: '#nutriciology', label: 'О нутрициологии' },
+  { href: '#about', label: 'Обо мне' },
   { href: '#services', label: 'Услуги' },
   { href: '#testimonials', label: 'Отзывы' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Контакты' },
 ]
 
 export default function Header() {
@@ -43,9 +42,19 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <SmoothScrollLink
             href="#hero"
-            className="text-lg xs:text-xl sm:text-2xl font-bold text-beige-700 hover:text-beige-800 transition-colors"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            Нутрициолог Лика
+            <Image
+              src="/images/logo.jpg"
+              alt="Лика Надточеева - нутрициолог"
+              width={44}
+              height={44}
+              className="rounded-full"
+              priority
+            />
+            <span className="hidden sm:inline text-lg font-bold text-sage-800">
+              Лика Надточеева
+            </span>
           </SmoothScrollLink>
 
           {/* Desktop Navigation */}
@@ -54,10 +63,10 @@ export default function Header() {
               <SmoothScrollLink
                 key={item.href}
                 href={item.href}
-                className="text-beige-700 hover:text-beige-500 font-medium transition-colors relative group"
+                className="text-sage-800 hover:text-sage-600 font-medium transition-colors relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-beige-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-sage-600 group-hover:w-full transition-all duration-300" />
               </SmoothScrollLink>
             ))}
             <SocialLinks />
@@ -65,7 +74,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 xs:p-2.5 min-h-touch min-w-touch text-beige-700 flex items-center justify-center"
+            className="md:hidden p-2 xs:p-2.5 min-h-touch min-w-touch text-sage-800 flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Меню"
           >
@@ -94,7 +103,7 @@ export default function Header() {
                     <SmoothScrollLink
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-beige-700 hover:text-beige-500 font-medium block py-2.5 xs:py-3 min-h-touch text-sm xs:text-base"
+                      className="text-sage-800 hover:text-sage-600 font-medium block py-2.5 xs:py-3 min-h-touch text-sm xs:text-base"
                     >
                       {item.label}
                     </SmoothScrollLink>

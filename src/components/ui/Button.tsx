@@ -12,11 +12,11 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseClasses = 'px-5 xs:px-6 py-3 min-h-touch rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm xs:text-base'
-  
+
   const variantClasses = {
-    primary: 'bg-beige-600 text-white hover:bg-beige-700 shadow-lg hover:shadow-xl',
-    secondary: 'bg-beige-400 text-white hover:bg-beige-500',
-    outline: 'border-2 border-beige-600 text-beige-600 hover:bg-beige-50',
+    primary: 'bg-sage-700 text-white hover:bg-sage-800 shadow-lg hover:shadow-xl',
+    secondary: 'bg-sage-500 text-white hover:bg-sage-600',
+    outline: 'border-2 border-sage-700 text-sage-700 hover:bg-sage-50',
   }
 
   return (

@@ -19,7 +19,7 @@ export default function ConsultationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!privacyAccepted) return
-    
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -28,7 +28,7 @@ export default function ConsultationForm() {
       setSubmitStatus('success')
       setFormData({ name: '', phone: '', email: '', message: '' })
       setPrivacyAccepted(false)
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -38,7 +38,7 @@ export default function ConsultationForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3 xs:space-y-4">
       <FormField
-        label="Как вас зовут?"
+        label="Ваше имя"
         name="name"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -53,49 +53,44 @@ export default function ConsultationForm() {
         required
       />
       <FormField
-        label="Email"
+        label="Ваш e-mail"
         name="email"
         type="email"
         value={formData.email}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         required
       />
-      <FormField
-        label="Сообщение (необязательно)"
-        name="message"
-        type="textarea"
-        value={formData.message}
-        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-      />
-      
-      <div className="flex items-start gap-3 p-4 bg-beige-50 rounded-xl border-2 border-beige-200 hover:border-beige-300 transition-colors">
+
+      <div className="flex items-start gap-3 p-4 bg-beige-50 rounded-xl border-2 border-beige-200 hover:border-sage-300 transition-colors">
         <input
           type="checkbox"
           id="consultation-privacy"
           checked={privacyAccepted}
           onChange={(e) => setPrivacyAccepted(e.target.checked)}
           required
-          className="w-5 h-5 xs:w-6 xs:h-6 text-beige-600 border-2 border-beige-300 rounded-md focus:ring-2 focus:ring-beige-500 focus:ring-offset-2 mt-0.5 flex-shrink-0 cursor-pointer transition-all"
+          className="w-5 h-5 xs:w-6 xs:h-6 text-sage-700 border-2 border-beige-300 rounded-md focus:ring-2 focus:ring-sage-500 focus:ring-offset-2 mt-0.5 flex-shrink-0 cursor-pointer transition-all accent-sage-700"
         />
-        <label htmlFor="consultation-privacy" className="text-sm xs:text-base text-beige-700 leading-relaxed cursor-pointer flex-1">
-          Я согласен с{' '}
-          <a href="/privacy" className="text-beige-600 hover:text-beige-700 underline font-medium">
-            политикой конфиденциальности
+        <label htmlFor="consultation-privacy" className="text-sm xs:text-base text-sage-800 leading-relaxed cursor-pointer flex-1">
+          Отправляя свои персональные данные, Вы соглашаетесь с{' '}
+          <a href="/privacy" className="text-sage-700 hover:text-sage-800 underline font-medium">
+            Положением о персональных данных
           </a>
         </label>
       </div>
-      {submitStatus === 'success' && (
-        <div className="p-3 xs:p-4 bg-green-100 text-green-700 rounded-lg text-sm xs:text-base">
-          Спасибо! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.
-        </div>
-      )}
-      {submitStatus === 'error' && (
-        <div className="p-3 xs:p-4 bg-red-100 text-red-700 rounded-lg text-sm xs:text-base">
-          Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.
-        </div>
-      )}
+      <div aria-live="polite" aria-atomic="true">
+        {submitStatus === 'success' && (
+          <div className="p-3 xs:p-4 bg-sage-100 text-sage-900 rounded-lg text-sm xs:text-base">
+            Спасибо! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.
+          </div>
+        )}
+        {submitStatus === 'error' && (
+          <div className="p-3 xs:p-4 bg-red-100 text-red-700 rounded-lg text-sm xs:text-base">
+            Произошла ошибка. Пожалуйста, попробуйте ещё раз или свяжитесь со мной напрямую.
+          </div>
+        )}
+      </div>
       <Button type="submit" disabled={isSubmitting || !privacyAccepted} className="w-full">
-        {isSubmitting ? 'Отправка...' : 'Записаться на консультацию'}
+        {isSubmitting ? 'Отправка...' : 'ЗАПИСАТЬСЯ'}
       </Button>
     </form>
   )

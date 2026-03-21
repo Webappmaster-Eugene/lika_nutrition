@@ -1,0 +1,129 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+
+const diplomas = [
+  { src: '/images/diplomas/diploma-1.jpg', alt: 'Диплом нутрициолога 1' },
+  { src: '/images/diplomas/diploma-2.jpg', alt: 'Диплом нутрициолога 2' },
+  { src: '/images/diplomas/diploma-3.jpg', alt: 'Диплом нутрициолога 3' },
+  { src: '/images/diplomas/diploma-4.jpg', alt: 'Диплом нутрициолога 4' },
+]
+
+interface DiplomaGalleryModalProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProps) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState(0)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowRight') goNext()
+      if (e.key === 'ArrowLeft') goPrev()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [isOpen, currentIndex, onClose])
+
+  const goNext = () => {
+    setDirection(1)
+    setCurrentIndex((prev) => (prev + 1) % diplomas.length)
+  }
+
+  const goPrev = () => {
+    setDirection(-1)
+    setCurrentIndex((prev) => (prev - 1 + diplomas.length) % diplomas.length)
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 xs:p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="relative max-w-3xl w-full mx-auto"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            aria-label="Закрыть"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); goPrev() }}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            aria-label="Предыдущий диплом"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); goNext() }}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            aria-label="Следующий диплом"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={diplomas[currentIndex].src}
+                  alt={diplomas[currentIndex].alt}
+                  fill
+                  className="object-contain bg-white"
+                  sizes="90vw"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-4 text-center text-white">
+            <p className="text-sm text-white/60">
+              {currentIndex + 1} из {diplomas.length}
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}

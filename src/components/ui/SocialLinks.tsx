@@ -16,7 +16,7 @@ export default function SocialLinks() {
         href={socialLinks.telegram}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-beige-600 text-white rounded-full hover:bg-beige-700 transition-colors shadow-lg hover:shadow-xl"
+        className="flex items-center gap-2 px-4 py-2 bg-sage-700 text-white rounded-full hover:bg-sage-800 transition-colors shadow-lg hover:shadow-xl"
         aria-label="Telegram"
       >
         <MessageCircle size={20} />

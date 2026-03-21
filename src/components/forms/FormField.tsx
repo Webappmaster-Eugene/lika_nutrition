@@ -24,9 +24,9 @@ export default function FormField({
   const [isFocused, setIsFocused] = useState(false)
   const hasValue = value.length > 0
 
-  const baseClasses = `w-full px-4 xs:px-5 py-3.5 xs:py-4 min-h-touch border-2 rounded-2xl bg-white text-beige-800 placeholder-beige-400 transition-all duration-300 text-sm xs:text-base ${
+  const baseClasses = `w-full px-4 xs:px-5 py-3.5 xs:py-4 min-h-touch border-2 rounded-2xl bg-white text-sage-900 placeholder-beige-400 transition-all duration-300 text-sm xs:text-base ${
     isFocused
-      ? 'border-beige-500 ring-4 ring-beige-100 shadow-lg'
+      ? 'border-sage-500 ring-4 ring-sage-100 shadow-lg'
       : 'border-beige-200 hover:border-beige-300'
   } ${hasValue && !isFocused ? 'border-beige-300 bg-beige-50/30' : ''}`
 
@@ -34,12 +34,12 @@ export default function FormField({
     <div className={`relative ${className}`}>
       <label
         htmlFor={name}
-        className={`block text-sm xs:text-base font-semibold text-beige-800 mb-2.5 xs:mb-3 transition-all duration-300 ${
-          isFocused || hasValue ? 'text-beige-700' : 'text-beige-600'
+        className={`block text-sm xs:text-base font-semibold mb-2.5 xs:mb-3 transition-all duration-300 ${
+          isFocused || hasValue ? 'text-sage-800' : 'text-sage-700'
         }`}
       >
         {label}
-        {required && <span className="text-beige-500 ml-1">*</span>}
+        {required && <span className="text-sage-500 ml-1">*</span>}
       </label>
       {type === 'textarea' ? (
         <textarea
@@ -67,7 +67,7 @@ export default function FormField({
         />
       )}
       {isFocused && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-beige-400 via-beige-500 to-beige-400 rounded-full animate-pulse" />
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sage-400 via-sage-600 to-sage-400 rounded-full animate-pulse" />
       )}
     </div>
   )

@@ -21,7 +21,7 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #faf8f5;
+  background: #F5F0E6;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,28 +43,24 @@ img, video, iframe, embed, object {
     line-height: 1.5;
     overflow-x: hidden;
   }
-  
-  /* Улучшенная читаемость на маленьких экранах */
+
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
-  /* Оптимизация для touch-интерфейса */
+
   button, a, input, textarea, select {
     min-height: 44px;
     touch-action: manipulation;
   }
-  
-  /* Боковые отступы контейнера (минимум 1rem для видимого зазора) */
+
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 100%;
   }
-  
-  /* Исправление для grid и flex контейнеров */
+
   [class*="grid"], [class*="flex"] {
     max-width: 100%;
   }
@@ -76,15 +72,13 @@ img, video, iframe, embed, object {
     font-size: 14px;
     line-height: 1.5;
   }
-  
-  /* Улучшенная читаемость на маленьких экранах */
+
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
-  /* Оптимизация для touch-интерфейса */
+
   button, a, input, textarea, select {
     min-height: 44px;
     touch-action: manipulation;
@@ -108,7 +102,7 @@ img, video, iframe, embed, object {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -118,7 +112,6 @@ img, video, iframe, embed, object {
 }
 
 @layer components {
-  /* Единый контейнер с адаптивными боковыми отступами */
   .container {
     @apply w-full max-w-full;
     padding-left: 1rem;
@@ -144,45 +137,45 @@ img, video, iframe, embed, object {
   }
 
   .prose {
-    @apply text-beige-700;
+    @apply text-sage-800;
   }
-  
+
   .prose h1 {
-    @apply text-4xl font-bold mb-6 text-beige-800;
+    @apply text-4xl font-bold mb-6 text-sage-900;
   }
-  
+
   .prose h2 {
-    @apply text-3xl font-bold mb-4 text-beige-800 mt-8;
+    @apply text-3xl font-bold mb-4 text-sage-900 mt-8;
   }
-  
+
   .prose h3 {
-    @apply text-2xl font-semibold mb-3 text-beige-800 mt-6;
+    @apply text-2xl font-semibold mb-3 text-sage-900 mt-6;
   }
-  
+
   .prose p {
     @apply mb-4 leading-relaxed;
   }
-  
+
   .prose ul {
     @apply list-disc list-inside mb-4 space-y-2;
   }
-  
+
   .prose ol {
     @apply list-decimal list-inside mb-4 space-y-2;
   }
-  
+
   .prose li {
     @apply mb-2;
   }
-  
+
   .prose a {
-    @apply text-beige-600 hover:text-beige-700 underline;
+    @apply text-sage-700 hover:text-sage-800 underline;
   }
-  
+
   .prose strong {
-    @apply font-semibold text-beige-800;
+    @apply font-semibold text-sage-900;
   }
-  
+
   .prose img {
     @apply rounded-lg my-6 max-w-full;
   }

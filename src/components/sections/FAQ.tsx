@@ -48,7 +48,7 @@ export default function FAQ() {
       <StructuredData data={faqStructuredData} />
       <AnimatedSection
         id="faq"
-        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
+        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-beige-50"
       >
         <div className="container mx-auto w-full max-w-full overflow-x-hidden">
           <div className="max-w-4xl mx-auto">
@@ -59,62 +59,62 @@ export default function FAQ() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-beige-800 mb-3 xs:mb-4">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
                 Часто задаваемые вопросы
               </h2>
-              <p className="text-base xs:text-lg sm:text-xl text-beige-600 max-w-3xl mx-auto">
-              Ответы на самые популярные вопросы
-            </p>
-            <div className="w-24 h-1 bg-beige-500 mx-auto rounded-full mt-6" />
-          </motion.div>
+              <p className="text-base xs:text-lg text-sage-700 max-w-3xl mx-auto">
+                Ответы на самые популярные вопросы
+              </p>
+              <div className="w-24 h-1 bg-sage-600 mx-auto rounded-full mt-6" />
+            </motion.div>
 
-          <div className="space-y-3 xs:space-y-4">
-            {faqItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-beige-50 rounded-xl xs:rounded-2xl overflow-hidden border border-beige-200"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <button
-                  onClick={() => toggleItem(index)}
-                  className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-beige-100 transition-colors min-h-touch"
+            <div className="space-y-3 xs:space-y-4">
+              {faqItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white rounded-xl xs:rounded-2xl overflow-hidden border border-beige-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <span className="text-sm xs:text-base sm:text-lg font-semibold text-beige-800 pr-3 xs:pr-4">
-                    {item.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0"
+                  <button
+                    onClick={() => toggleItem(index)}
+                    className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-sage-50 transition-colors min-h-touch"
                   >
-                    <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6 text-beige-600" />
-                  </motion.div>
-                </button>
-                <AnimatePresence>
-                  {openIndex === index && (
+                    <span className="text-sm xs:text-base sm:text-lg font-semibold text-sage-900 pr-3 xs:pr-4">
+                      {item.question}
+                    </span>
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                      animate={{ rotate: openIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
+                      className="flex-shrink-0"
                     >
-                      <div className="px-4 xs:px-6 pb-4 xs:pb-5 text-sm xs:text-base text-beige-700 leading-relaxed">
-                        {item.answer}
-                      </div>
+                      <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6 text-sage-600" />
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
+                  </button>
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 xs:px-6 pb-4 xs:pb-5 text-sm xs:text-base text-sage-700 leading-relaxed">
+                          {item.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </AnimatedSection>
+      </AnimatedSection>
     </>
   )
 }
