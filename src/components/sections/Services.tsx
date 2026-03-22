@@ -25,7 +25,7 @@ export default function Services() {
         id="services"
         className="py-12 xs:py-16 sm:py-20 md:py-24 bg-beige-50"
       >
-        <div className="container mx-auto w-full max-w-full">
+        <div className="container mx-auto">
           <div className="max-w-7xl mx-auto">
             <motion.div
               className="text-center mb-8 xs:mb-12 sm:mb-16"

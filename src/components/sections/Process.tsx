@@ -22,7 +22,7 @@ export default function Process() {
       id="process"
       className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
     >
-      <div className="container mx-auto w-full max-w-full">
+      <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xs:gap-10 lg:gap-14">
             {/* Левая колонка — Форма */}

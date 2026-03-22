@@ -45,9 +45,9 @@ export default function Testimonials() {
       <StructuredData data={aggregateRating} />
       <AnimatedSection
         id="testimonials"
-        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white w-full max-w-full overflow-x-hidden"
+        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white overflow-x-hidden"
       >
-        <div className="container mx-auto w-full max-w-full overflow-x-hidden">
+        <div className="container mx-auto overflow-x-hidden">
           <div className="max-w-4xl mx-auto w-full">
             <motion.div
               className="text-center mb-8 xs:mb-12 sm:mb-16"
@@ -83,9 +83,9 @@ export default function Testimonials() {
                   </button>
 
                   {/* Слайд с декоративной рамкой */}
-                  <div className="relative">
+                  <div className="relative flex-1 min-w-0 max-w-lg mx-auto">
                     <div className="absolute -inset-2 border-2 border-accent-300/30 rounded-3xl" />
-                    <div className="relative w-full max-w-lg aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+                    <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
                       <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                           key={currentIndex}

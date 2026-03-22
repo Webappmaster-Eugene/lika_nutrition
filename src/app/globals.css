@@ -117,7 +117,7 @@ img, video, iframe, embed, object {
 
 @layer components {
   .container {
-    @apply w-full max-w-full;
+    @apply w-full max-w-[1920px] mx-auto;
     padding-left: 1rem;
     padding-right: 1rem;
   }

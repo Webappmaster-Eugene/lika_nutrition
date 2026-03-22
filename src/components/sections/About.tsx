@@ -1,16 +1,21 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import { DiplomaGalleryModal } from '@/components/ui/DiplomaGalleryModal'
+import { GraduationCap } from 'lucide-react'
 
 export default function About() {
+  const [isDiplomaOpen, setIsDiplomaOpen] = useState(false)
+
   return (
     <AnimatedSection
       id="about"
       className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white"
     >
-      <div className="container mx-auto w-full max-w-full">
+      <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-8 xs:mb-12"
@@ -79,10 +84,19 @@ export default function About() {
                   &laquo;Потому что здоровье — это не про контроль, а про поддержку и понимание.&raquo;
                 </p>
               </div>
+              <button
+                onClick={() => setIsDiplomaOpen(true)}
+                className="flex items-center gap-3 mt-4 px-5 py-3 bg-beige-50 rounded-xl hover:bg-beige-100 transition-colors text-left min-h-touch border border-beige-300"
+              >
+                <GraduationCap className="w-5 h-5 text-accent-500" />
+                <span className="text-sm font-medium text-sage-800">Моё образование</span>
+              </button>
             </motion.div>
           </div>
         </div>
       </div>
+
+      <DiplomaGalleryModal isOpen={isDiplomaOpen} onClose={() => setIsDiplomaOpen(false)} />
     </AnimatedSection>
   )
 }

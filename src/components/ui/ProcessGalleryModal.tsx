@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -16,6 +16,21 @@ const processImages = [
   { src: '/images/process/process-8.jpg', alt: 'Процесс работы 8' },
 ]
 
+const slideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 300 : -300,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir > 0 ? -300 : 300,
+    opacity: 0,
+  }),
+}
+
 interface ProcessGalleryModalProps {
   isOpen: boolean
   onClose: () => void
@@ -24,6 +39,16 @@ interface ProcessGalleryModalProps {
 export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
+
+  const goNext = useCallback(() => {
+    setDirection(1)
+    setCurrentIndex((prev) => (prev + 1) % processImages.length)
+  }, [])
+
+  const goPrev = useCallback(() => {
+    setDirection(-1)
+    setCurrentIndex((prev) => (prev - 1 + processImages.length) % processImages.length)
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
@@ -45,17 +70,7 @@ export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProp
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [isOpen, currentIndex, onClose])
-
-  const goNext = () => {
-    setDirection(1)
-    setCurrentIndex((prev) => (prev + 1) % processImages.length)
-  }
-
-  const goPrev = () => {
-    setDirection(-1)
-    setCurrentIndex((prev) => (prev - 1 + processImages.length) % processImages.length)
-  }
+  }, [isOpen, onClose, goNext, goPrev])
 
   if (!isOpen) return null
 
@@ -77,26 +92,26 @@ export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProp
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 rounded-full p-3 text-white transition-colors shadow-lg min-h-touch min-w-touch flex items-center justify-center"
             aria-label="Закрыть"
           >
-            <X className="w-6 h-6" />
+            <X className="w-7 h-7" />
           </button>
 
           <button
             onClick={(e) => { e.stopPropagation(); goPrev() }}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 rounded-full p-3 text-white transition-colors shadow-lg min-h-touch min-w-touch flex items-center justify-center"
             aria-label="Предыдущее изображение"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-7 h-7" />
           </button>
 
           <button
             onClick={(e) => { e.stopPropagation(); goNext() }}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 rounded-full p-3 text-white transition-colors shadow-lg min-h-touch min-w-touch flex items-center justify-center"
             aria-label="Следующее изображение"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-7 h-7" />
           </button>
 
           <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden">
@@ -104,9 +119,10 @@ export function ProcessGalleryModal({ isOpen, onClose }: ProcessGalleryModalProp
               <motion.div
                 key={currentIndex}
                 custom={direction}
-                initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="absolute inset-0"
               >

@@ -32,13 +32,13 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full max-w-full ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg'
           : 'bg-beige-50/80 backdrop-blur-sm'
       }`}
     >
-      <div className="container mx-auto py-3 xs:py-4 w-full max-w-full">
+      <div className="container mx-auto py-3 xs:py-4">
         <div className="flex items-center justify-between">
           <SmoothScrollLink
             href="#hero"
@@ -47,14 +47,11 @@ export default function Header() {
             <Image
               src="/images/logo.jpg"
               alt="Лика Надточеева - нутрициолог"
-              width={44}
-              height={44}
+              width={56}
+              height={56}
               className="rounded-full"
               priority
             />
-            <span className="hidden sm:inline text-lg font-serif font-bold text-sage-800">
-              Лика Надточеева
-            </span>
           </SmoothScrollLink>
 
           {/* Desktop Navigation */}

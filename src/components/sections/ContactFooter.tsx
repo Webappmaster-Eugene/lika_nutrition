@@ -19,7 +19,7 @@ export default function ContactFooter() {
     <>
       {/* Contact Section */}
       <section id="contact" className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white">
-        <div className="container mx-auto w-full max-w-full">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xs:gap-10 lg:gap-14 items-center">
               {/* Левая колонка — Форма */}
@@ -64,11 +64,11 @@ export default function ContactFooter() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-sage-900 text-beige-50 py-10 xs:py-12 sm:py-14 md:py-16 w-full max-w-full overflow-x-hidden relative" role="contentinfo">
+      <footer className="bg-sage-900 text-beige-50 py-10 xs:py-12 sm:py-14 md:py-16 overflow-x-hidden relative" role="contentinfo">
         {/* Декоративная линия сверху */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sage-700 via-accent-400 to-sage-700" />
 
-        <div className="container mx-auto w-full max-w-full">
+        <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 xs:gap-10 sm:gap-12 mb-8 xs:mb-10 sm:mb-12">
             {/* Логотип */}
             <motion.div
@@ -81,11 +81,10 @@ export default function ContactFooter() {
                 <Image
                   src="/images/logo.jpg"
                   alt="Лика Надточеева"
-                  width={40}
-                  height={40}
+                  width={56}
+                  height={56}
                   className="rounded-full"
                 />
-                <span className="text-xl font-serif font-bold text-white">Лика Надточеева</span>
               </SmoothScrollLink>
               <p className="text-sm text-beige-300 leading-relaxed">
                 Помогу выстроить доверительные отношения между телом и пищей

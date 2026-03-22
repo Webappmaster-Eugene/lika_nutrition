@@ -1,17 +1,11 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import ConsultationForm from '@/components/forms/ConsultationForm'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
-import { DiplomaGalleryModal } from '@/components/ui/DiplomaGalleryModal'
-import { socialLinks } from '@/lib/constants/social'
-import { ArrowDown, Send, MessageCircle, GraduationCap } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 
 export default function Hero() {
-  const [isDiplomaOpen, setIsDiplomaOpen] = useState(false)
-
   return (
     <section
       id="hero"
@@ -31,53 +25,15 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="container mx-auto w-full max-w-full overflow-x-hidden py-8 xs:py-12 sm:py-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xs:gap-8 lg:gap-6 items-start max-w-7xl mx-auto w-full">
-
-          {/* Левая колонка — Форма (Desktop) */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="hidden lg:block lg:col-span-3"
-          >
-            <div className="bg-white/90 backdrop-blur-sm p-5 xl:p-6 rounded-2xl shadow-xl border border-beige-300 sticky top-24">
-              <h2 className="text-lg xl:text-xl font-serif font-bold text-sage-900 mb-2">
-                Запишитесь на бесплатную консультацию
-              </h2>
-              <p className="text-sm text-sage-600 mb-4">
-                Я подберу для вас оптимальную программу, исходя из ваших потребностей
-              </p>
-              <ConsultationForm />
-            </div>
-          </motion.div>
+      <div className="container mx-auto overflow-x-hidden py-8 xs:py-12 sm:py-16 relative z-10">
+        <div className="max-w-3xl mx-auto w-full">
 
           {/* Центральная колонка — Контент + Фото */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-6"
           >
-            {/* Навигация мини */}
-            <div className="hidden md:flex items-center justify-center gap-4 mb-6 flex-wrap">
-              {[
-                { href: '#about', label: 'Обо мне' },
-                { href: '#three-pillars', label: 'Ресурс' },
-                { href: '#services', label: 'Услуги' },
-                { href: '#faq', label: 'FAQ' },
-                { href: '#contact', label: 'Контакты' },
-              ].map((item) => (
-                <SmoothScrollLink
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-sage-600 hover:text-accent-500 transition-colors font-medium"
-                >
-                  {item.label}
-                </SmoothScrollLink>
-              ))}
-            </div>
-
             <h1 className="sr-only">Превентивный нутрициолог Лика Надточеева - Восстановление энергии, нормализация ЖКТ, здоровый вес без диет</h1>
 
             <motion.div
@@ -141,70 +97,10 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
               >
-                Хочу разобраться и начать спокойно есть
+                Запись на бесплатную консультацию
                 <ArrowDown className="w-4 h-4 xs:w-5 xs:h-5" />
               </SmoothScrollLink>
             </motion.div>
-          </motion.div>
-
-          {/* Правая колонка — Соцсети + Дипломы (Desktop) */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="hidden lg:block lg:col-span-3"
-          >
-            <div className="bg-white/90 backdrop-blur-sm p-5 xl:p-6 rounded-2xl shadow-xl border border-beige-300 sticky top-24">
-              <p className="text-sm font-semibold text-sage-900 mb-3">
-                Вы также можете связаться со мной:
-              </p>
-              <div className="space-y-3">
-                <a
-                  href={socialLinks.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-sage-50 rounded-xl hover:bg-sage-100 transition-colors min-h-touch border border-sage-200"
-                >
-                  <Send className="w-5 h-5 text-sage-600" />
-                  <span className="text-sm font-medium text-sage-800">Telegram</span>
-                </a>
-                <a
-                  href={socialLinks.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-sage-50 rounded-xl hover:bg-sage-100 transition-colors min-h-touch border border-sage-200"
-                >
-                  <MessageCircle className="w-5 h-5 text-sage-600" />
-                  <span className="text-sm font-medium text-sage-800">WhatsApp</span>
-                </a>
-              </div>
-              <hr className="my-4 border-beige-300" />
-              <button
-                onClick={() => setIsDiplomaOpen(true)}
-                className="flex items-center gap-3 w-full px-4 py-3 bg-beige-50 rounded-xl hover:bg-beige-100 transition-colors text-left min-h-touch border border-beige-300"
-              >
-                <GraduationCap className="w-5 h-5 text-accent-500" />
-                <span className="text-sm font-medium text-sage-800">Моё образование</span>
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Мобильная форма */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="lg:hidden col-span-1"
-          >
-            <div className="bg-white/90 backdrop-blur-sm p-5 xs:p-6 rounded-2xl shadow-xl border border-beige-300">
-              <h2 className="text-lg xs:text-xl font-serif font-bold text-sage-900 mb-2">
-                Запишитесь на бесплатную консультацию
-              </h2>
-              <p className="text-sm text-sage-600 mb-4">
-                Я подберу для вас оптимальную программу
-              </p>
-              <ConsultationForm />
-            </div>
           </motion.div>
         </div>
 
@@ -219,8 +115,6 @@ export default function Hero() {
           </SmoothScrollLink>
         </motion.div>
       </div>
-
-      <DiplomaGalleryModal isOpen={isDiplomaOpen} onClose={() => setIsDiplomaOpen(false)} />
     </section>
   )
 }

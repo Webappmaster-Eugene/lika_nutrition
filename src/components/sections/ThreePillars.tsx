@@ -57,7 +57,7 @@ export default function ThreePillars() {
           </svg>
         </div>
 
-        <div className="container mx-auto w-full max-w-full relative z-10">
+        <div className="container mx-auto relative z-10">
           <div className="max-w-6xl mx-auto">
             <motion.div
               className="text-center mb-8 xs:mb-12 sm:mb-16"
