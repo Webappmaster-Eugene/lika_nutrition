@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import { SectionHeading } from '@/components/ui/SectionHeading'
 import StructuredData from '@/components/seo/StructuredData'
 import { getFAQPageStructuredData } from '@/lib/utils/seo'
 import { ChevronDown } from 'lucide-react'
@@ -52,74 +53,70 @@ export default function FAQ() {
       >
         <div className="container mx-auto overflow-x-hidden">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              className="text-center mb-8 xs:mb-12 sm:mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="font-serif text-3xl xs:text-4xl sm:text-5xl font-bold text-sage-900 mb-3 xs:mb-4">
-                Часто задаваемые вопросы
-              </h2>
-              <p className="text-base xs:text-lg text-sage-600 max-w-3xl mx-auto">
-                Ответы на самые популярные вопросы
-              </p>
-              <div className="flex items-center justify-center gap-3 mt-6">
-                <div className="w-12 h-px bg-accent-400" />
-                <div className="w-2 h-2 rounded-full bg-accent-400" />
-                <div className="w-12 h-px bg-accent-400" />
-              </div>
-            </motion.div>
+            <SectionHeading
+              title="Часто задаваемые вопросы"
+              subtitle="Ответы на самые популярные вопросы"
+            />
 
             <div className="space-y-3 xs:space-y-4">
-              {faqItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className={`bg-white rounded-xl xs:rounded-2xl overflow-hidden border transition-all duration-300 ${
-                    openIndex === index
-                      ? 'border-accent-300 shadow-md'
-                      : 'border-beige-200 hover:border-sage-300'
-                  }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                >
-                  <button
-                    onClick={() => toggleItem(index)}
-                    className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-sage-50/50 transition-colors min-h-touch"
+              {faqItems.map((item, index) => {
+                const isOpen = openIndex === index
+                const number = String(index + 1).padStart(2, '0')
+                return (
+                  <motion.div
+                    key={index}
+                    className={`bg-white rounded-xl xs:rounded-2xl overflow-hidden transition-all duration-300 ${
+                      isOpen
+                        ? 'border border-accent-300 border-l-4 border-l-accent-400 shadow-md'
+                        : 'border border-beige-200 hover:border-sage-300 hover:shadow-sm'
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
                   >
-                    <span className="text-sm xs:text-base sm:text-lg font-semibold text-sage-900 pr-3 xs:pr-4">
-                      {item.question}
-                    </span>
-                    <motion.div
-                      animate={{ rotate: openIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className={`flex-shrink-0 transition-colors duration-300 ${
-                        openIndex === index ? 'text-accent-500' : 'text-sage-500'
-                      }`}
+                    <button
+                      onClick={() => toggleItem(index)}
+                      className="w-full px-4 xs:px-6 py-4 xs:py-5 flex items-center justify-between text-left hover:bg-sage-50/50 transition-colors min-h-touch"
                     >
-                      <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6" />
-                    </motion.div>
-                  </button>
-                  <AnimatePresence>
-                    {openIndex === index && (
+                      <div className="flex items-center gap-3 xs:gap-4 pr-3 xs:pr-4">
+                        <span className="text-sage-200 font-serif font-bold text-lg xs:text-xl flex-shrink-0">
+                          {number}
+                        </span>
+                        <span className="text-sm xs:text-base sm:text-lg font-semibold text-sage-900">
+                          {item.question}
+                        </span>
+                      </div>
                       <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
+                        animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
+                        className={`flex-shrink-0 transition-colors duration-300 ${
+                          isOpen ? 'text-accent-500' : 'text-sage-500'
+                        }`}
                       >
-                        <div className="px-4 xs:px-6 pb-4 xs:pb-5 text-sm xs:text-base text-sage-600 leading-relaxed">
-                          {item.answer}
-                        </div>
+                        <ChevronDown className="w-5 h-5 xs:w-6 xs:h-6" />
                       </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
+                    </button>
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 xs:px-6 pb-4 xs:pb-5 ml-0 xs:ml-10">
+                            <div className="bg-sage-50/30 rounded-lg p-3 xs:p-4 text-sm xs:text-base text-sage-600 leading-relaxed">
+                              {item.answer}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                )
+              })}
             </div>
           </div>
         </div>

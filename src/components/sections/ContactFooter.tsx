@@ -1,11 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import ConsultationForm from '@/components/forms/ConsultationForm'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
+import { BotanicalDecoration } from '@/components/ui/BotanicalDecoration'
 import { socialLinks } from '@/lib/constants/social'
-import { Phone, Mail, Send } from 'lucide-react'
+import { Phone, Mail, Send, ArrowUp } from 'lucide-react'
 
 const footerLinks = [
   { href: '#about', label: 'Обо мне' },
@@ -15,27 +17,57 @@ const footerLinks = [
 ]
 
 export default function ContactFooter() {
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       {/* Contact Section */}
-      <section id="contact" className="py-12 xs:py-16 sm:py-20 md:py-24 bg-white">
-        <div className="container mx-auto">
+      <section id="contact" className="py-12 xs:py-16 sm:py-20 md:py-24 bg-gradient-to-br from-beige-50 via-white to-sage-50 relative overflow-hidden">
+        {/* Botanical decoration */}
+        <BotanicalDecoration
+          variant="fern"
+          position="absolute top-20 -right-10"
+          size="w-48 h-48"
+          opacity="opacity-[0.04]"
+        />
+        <BotanicalDecoration
+          variant="branch"
+          position="absolute bottom-10 -left-8"
+          size="w-36 h-36"
+          opacity="opacity-[0.03]"
+        />
+
+        <div className="container mx-auto relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xs:gap-10 lg:gap-14 items-center">
-              {/* Левая колонка — Форма */}
+              {/* Левая колонка — Glass форма */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-sage-900 mb-3">
-                  Запишитесь на бесплатную консультацию
-                </h2>
-                <p className="text-sm xs:text-base text-sage-600 mb-6 leading-relaxed">
-                  Я подберу для вас оптимальную программу, исходя из ваших потребностей и индивидуальных особенностей
-                </p>
-                <ConsultationForm />
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl border border-sage-200/30 shadow-lg p-5 xs:p-6 sm:p-8">
+                  <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl font-bold text-sage-900 mb-3">
+                    Запишитесь на бесплатную консультацию
+                  </h2>
+                  <p className="text-sm xs:text-base text-sage-600 mb-6 leading-relaxed">
+                    Я подберу для вас оптимальную программу, исходя из ваших потребностей и индивидуальных особенностей
+                  </p>
+                  <ConsultationForm />
+                </div>
               </motion.div>
 
               {/* Правая колонка — Фото с декоративной рамкой */}
@@ -65,8 +97,8 @@ export default function ContactFooter() {
 
       {/* Footer */}
       <footer className="bg-sage-900 text-beige-50 py-10 xs:py-12 sm:py-14 md:py-16 overflow-x-hidden relative" role="contentinfo">
-        {/* Декоративная линия сверху */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sage-700 via-accent-400 to-sage-700" />
+        {/* Animated shimmer line */}
+        <div className="absolute top-0 left-0 right-0 h-1 footer-shimmer-line" />
 
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 xs:gap-10 sm:gap-12 mb-8 xs:mb-10 sm:mb-12">
@@ -167,6 +199,25 @@ export default function ContactFooter() {
           </motion.div>
         </div>
       </footer>
+
+      {/* Scroll to top button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 w-12 h-12 bg-sage-700/90 hover:bg-sage-600 text-white rounded-full shadow-lg flex items-center justify-center z-50 backdrop-blur-sm transition-colors min-h-touch min-w-touch"
+            aria-label="Прокрутить наверх"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </>
   )
 }

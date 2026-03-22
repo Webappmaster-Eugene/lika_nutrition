@@ -1,22 +1,21 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import { BotanicalDecoration } from '@/components/ui/BotanicalDecoration'
 import ConsultationForm from '@/components/forms/ConsultationForm'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
 import { processSteps } from '@/lib/content/process'
-import { Diamond } from 'lucide-react'
-
-const diamondColors = [
-  'bg-sage-600',
-  'bg-sage-500',
-  'bg-accent-400',
-  'bg-sage-500',
-  'bg-sage-600',
-  'bg-accent-400',
-]
 
 export default function Process() {
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 0.8', 'end 0.5'],
+  })
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+
   return (
     <AnimatedSection
       id="process"
@@ -32,7 +31,14 @@ export default function Process() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-beige-50 p-5 xs:p-6 sm:p-8 rounded-2xl border border-beige-300 sticky top-24">
+              <div className="relative bg-beige-50 p-5 xs:p-6 sm:p-8 rounded-2xl border border-beige-300 sticky top-24 shadow-lg">
+                {/* Botanical accent */}
+                <BotanicalDecoration
+                  variant="leaf"
+                  position="absolute -top-4 -right-4"
+                  size="w-16 h-16"
+                  opacity="opacity-[0.08]"
+                />
                 <h3 className="text-xl xs:text-2xl font-serif font-bold text-sage-900 mb-2">
                   Запишитесь на бесплатную консультацию
                 </h3>
@@ -57,9 +63,14 @@ export default function Process() {
                 и что Вы получаете на выходе?
               </p>
 
-              <div className="space-y-6 relative">
-                {/* Вертикальная линия */}
-                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-gradient-to-b from-sage-300 via-accent-300 to-sage-300 hidden sm:block" />
+              <div className="space-y-6 relative" ref={timelineRef}>
+                {/* Background vertical line */}
+                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-sage-200/50 hidden sm:block" />
+                {/* Scroll-linked fill line */}
+                <motion.div
+                  className="absolute left-5 top-8 w-0.5 bg-gradient-to-b from-accent-400 to-sage-400 hidden sm:block origin-top"
+                  style={{ height: lineHeight }}
+                />
 
                 {processSteps.map((step, index) => (
                   <motion.div
@@ -71,20 +82,27 @@ export default function Process() {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                   >
                     <div className="flex-shrink-0 relative z-10">
-                      <div className={`w-10 h-10 ${diamondColors[index % diamondColors.length]} rounded-lg rotate-45 flex items-center justify-center shadow-md`}>
-                        <Diamond className="w-4 h-4 text-white -rotate-45" />
-                      </div>
+                      <motion.div
+                        className="w-10 h-10 bg-accent-400 rounded-full flex items-center justify-center shadow-md text-white font-bold text-sm"
+                        whileInView={{ scale: [0.8, 1.1, 1] }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                      >
+                        {index + 1}
+                      </motion.div>
                     </div>
                     <div className="pt-1">
                       <div className="inline-block text-xs font-bold text-white bg-sage-600 uppercase tracking-wider mb-2 px-3 py-1 rounded-full">
                         Этап {step.stage}
                       </div>
-                      <h3 className="text-base xs:text-lg font-semibold text-sage-900 mb-1">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm xs:text-base text-sage-600 leading-relaxed">
-                        {step.description}
-                      </p>
+                      <div className="bg-sage-50/50 rounded-xl p-4 border border-sage-200/30">
+                        <h3 className="text-base xs:text-lg font-semibold text-sage-900 mb-1">
+                          {step.title}
+                        </h3>
+                        <p className="text-sm xs:text-base text-sage-600 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -97,12 +115,14 @@ export default function Process() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <SmoothScrollLink
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
-                >
-                  Записаться на консультацию
-                </SmoothScrollLink>
+                <motion.div className="inline-block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <SmoothScrollLink
+                    href="#contact"
+                    className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
+                  >
+                    Записаться на консультацию
+                  </SmoothScrollLink>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
