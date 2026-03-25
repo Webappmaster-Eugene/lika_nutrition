@@ -9,7 +9,7 @@ import { ServicesTableModal } from '@/components/ui/ServicesTableModal'
 import { services } from '@/lib/content/services'
 import { getServiceStructuredDataExtended } from '@/lib/utils/seo'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
-import { Table, Leaf } from 'lucide-react'
+import { Table } from 'lucide-react'
 import { staggerContainer, staggerItem, hoverLift } from '@/lib/animations'
 
 // ID рекомендованного тарифа (средний)
@@ -49,10 +49,10 @@ export default function Services() {
                 return (
                   <motion.div
                     key={service.id}
-                    className={`relative bg-white rounded-2xl shadow-md overflow-hidden flex flex-col transition-all duration-300 ${
+                    className={`relative bg-white rounded-2xl shadow-md flex flex-col transition-all duration-300 ${
                       isRecommended
-                        ? 'border-2 border-accent-400 shadow-lg'
-                        : 'border border-beige-200 hover:shadow-lg'
+                        ? 'border-2 border-accent-400 shadow-lg mt-5 overflow-visible z-10'
+                        : 'border border-beige-200 hover:shadow-lg overflow-hidden'
                     }`}
                     variants={staggerItem}
                     whileHover={hoverLift}
@@ -67,7 +67,7 @@ export default function Services() {
                     )}
 
                     {/* Top border accent */}
-                    <div className="h-1 bg-gradient-to-r from-sage-300 via-sage-400 to-sage-300" />
+                    <div className="h-1 bg-gradient-to-r from-sage-300 via-sage-400 to-sage-300 rounded-t-2xl" />
 
                     {/* Content */}
                     <div className="p-4 xs:p-5 flex-1 flex flex-col">
@@ -77,18 +77,21 @@ export default function Services() {
                       <p className="text-2xl xs:text-3xl font-bold text-accent-500 font-serif mb-3">
                         {service.price}
                       </p>
-                      <p className="text-sm text-sage-600 mb-4 leading-relaxed">
-                        {service.description}
-                      </p>
 
-                      <ul className="space-y-2 mb-5 flex-1">
-                        {service.features.map((feature, fIndex) => (
-                          <li key={fIndex} className="flex items-start gap-2 text-sm text-sage-800">
-                            <Leaf className="w-3.5 h-3.5 text-sage-400 flex-shrink-0 mt-0.5" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="space-y-3 mb-5 flex-1">
+                        <div>
+                          <p className="text-xs font-bold text-sage-500 uppercase tracking-wider mb-1">Для кого:</p>
+                          <p className="text-sm text-sage-700 leading-relaxed">
+                            {service.targetAudience}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-accent-500 uppercase tracking-wider mb-1">Фишка:</p>
+                          <p className="text-sm text-sage-700 leading-relaxed">
+                            {service.highlight}
+                          </p>
+                        </div>
+                      </div>
 
                       <SmoothScrollLink
                         href="#contact"
@@ -116,16 +119,13 @@ export default function Services() {
             >
               <motion.button
                 onClick={() => setIsTableOpen(true)}
-                className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 border-2 border-accent-400 text-accent-500 rounded-full font-semibold hover:bg-accent-50 transition-all duration-300 text-sm xs:text-base min-h-touch"
+                className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
               >
                 <Table className="w-5 h-5" />
-                Ознакомиться с полным пакетом услуг
+                <span>Ознакомиться с полным<br />пакетом услуг</span>
               </motion.button>
-              <p className="text-sm text-sage-500 mt-3 max-w-lg mx-auto">
-                Можно получить расписанный рекомендательный протокол, а также написать мне, чтобы уточнить, какой блок точно подходит вам
-              </p>
             </motion.div>
           </div>
         </div>

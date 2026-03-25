@@ -24,7 +24,7 @@ export default function SmoothScrollLink({
       const element = document.getElementById(targetId)
       
       if (element) {
-        const headerOffset = 80
+        const headerOffset = 120
         const elementPosition = element.getBoundingClientRect().top
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 

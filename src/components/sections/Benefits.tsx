@@ -6,13 +6,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { BotanicalDecoration } from '@/components/ui/BotanicalDecoration'
 import { benefits } from '@/lib/content/benefits'
 import { staggerContainer, staggerItem, hoverLift } from '@/lib/animations'
-import { Battery, Flame, Scale, Droplets, Cookie, Brain, type LucideIcon } from 'lucide-react'
+import { Battery, Flame, Scale, Shield, Cookie, Brain, type LucideIcon } from 'lucide-react'
 
 const iconMap: Record<string, LucideIcon> = {
   Battery,
   Flame,
   Scale,
-  Droplets,
+  Shield,
   Cookie,
   Brain,
 }
@@ -46,8 +46,8 @@ export default function Benefits() {
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
-            title="Если Вы устали от противоречивых советов — Вы по адресу"
-            subtitle="Я не предлагаю ещё больше правил. Я помогаю понять себя и своё тело — и выстроить систему, которая работает именно для вас."
+            title="Если вы устали от противоречивых советов, Вы по адресу"
+            subtitle="Я не предлагаю ещё больше правил. Я помогаю понять себя и своё тело, чтобы жить легко и стабильно."
           />
 
           <motion.div

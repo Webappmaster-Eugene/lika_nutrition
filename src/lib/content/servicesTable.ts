@@ -14,7 +14,7 @@ export const serviceTableColumns = [
   { key: 'startSPodderzhkoy', label: '«Старт с поддержкой»', price: '10 000 ₽' },
   { key: 'perezagruzka', label: 'Сопровождение 1 мес. «Перезагрузка»', price: '20 000 ₽' },
   { key: 'gkt', label: 'Сопровождение 2 мес. «Глубокая работа с ЖКТ»', price: '30 000 ₽' },
-  { key: 'integratsiya', label: 'Сопровождение 3 мес. «Интеграция»', price: '50 000 ₽' },
+  { key: 'integratsiya', label: 'Сопровождение 3 мес. «Интеграция. Новая версия себя»', price: '50 000 ₽' },
 ] as const
 
 export const serviceTableRows: ServiceTableRow[] = [

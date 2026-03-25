@@ -32,10 +32,8 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-beige-50/80 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
+        isScrolled ? 'shadow-lg' : ''
       }`}
     >
       <div className="container mx-auto py-3 xs:py-4">
@@ -47,9 +45,9 @@ export default function Header() {
             <Image
               src="/images/logo.jpg"
               alt="Лика Надточеева - нутрициолог"
-              width={56}
-              height={56}
-              className="rounded-full"
+              width={120}
+              height={120}
+              className="rounded-full w-20 h-20 sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px]"
               priority
             />
           </SmoothScrollLink>

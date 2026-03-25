@@ -22,7 +22,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen bg-gradient-to-br from-beige-50 via-beige-100 to-sage-100 overflow-hidden pt-16 xs:pt-20"
+      className="relative min-h-screen bg-gradient-to-br from-beige-50 via-beige-100 to-sage-100 overflow-hidden pt-28 xs:pt-32 sm:pt-36"
     >
       {/* Декоративные ботанические элементы с parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -38,11 +38,11 @@ export default function Hero() {
         </motion.svg>
       </div>
 
-      <div className="container mx-auto overflow-x-hidden py-8 xs:py-12 sm:py-16 relative z-10">
+      <div className="container mx-auto overflow-x-hidden py-6 xs:py-10 sm:py-16 relative z-10">
         <div className="max-w-3xl mx-auto w-full">
 
           <div>
-            <h1 className="sr-only">Превентивный нутрициолог Лика Надточеева - Восстановление энергии, нормализация ЖКТ, здоровый вес без диет</h1>
+            <h1 className="sr-only">Нутрициолог Лика Надточеева — Восстановление энергии, нормализация ЖКТ, здоровый вес без диет</h1>
 
             {/* Заголовок */}
             <motion.div
@@ -53,36 +53,17 @@ export default function Hero() {
               role="heading"
               aria-level={1}
             >
-              СНАЧАЛА РЕСУРС —{' '}
-              <span className="text-sage-600">ПОТОМ КРАСИВОЕ ТЕЛО</span>
+              СНАЧАЛА РЕСУРС
+              <br />
+              ПОТОМ КРАСИВОЕ ТЕЛО
             </motion.div>
-
-            {/* Подзаголовок */}
-            <motion.p
-              className="text-base xs:text-lg sm:text-xl text-sage-700 mb-2 font-medium text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-            >
-              Превентивный нутрициолог — <span className="font-serif italic">Лика Надточеева</span>
-            </motion.p>
-
-            {/* Описание */}
-            <motion.p
-              className="text-sm xs:text-base text-sage-600 mb-6 leading-relaxed text-center max-w-xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              Помогаю женщинам восстановить энергию, наладить ЖКТ и прийти к здоровому весу без диет, подсчёта калорий и крайностей. Только логика, диагностика и индивидуальный подход.
-            </motion.p>
 
             {/* Фото с декоративной рамкой и свечением */}
             <motion.div
-              className="relative w-full max-w-md mx-auto mb-6"
+              className="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm mx-auto mb-4 xs:mb-6"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
               {/* Мягкое свечение за фото */}
               <div className="absolute -inset-8 bg-sage-100/20 rounded-full blur-3xl" />
@@ -129,12 +110,23 @@ export default function Hero() {
               </motion.svg>
             </motion.div>
 
+            {/* Описание */}
+            <motion.p
+              className="text-sm xs:text-base text-sage-600 mb-5 xs:mb-6 leading-relaxed text-center max-w-xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              Помогу восстановить энергию, наладить ЖКТ
+              и прийти к здоровому весу без диет, подсчета калорий и крайностей.
+            </motion.p>
+
             {/* CTA кнопка */}
             <motion.div
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              transition={{ duration: 0.5, delay: 0.65 }}
             >
               <motion.div
                 className="inline-block"
@@ -145,8 +137,7 @@ export default function Hero() {
                   href="#contact"
                   className="inline-flex items-center gap-2 px-6 xs:px-8 py-3 xs:py-4 bg-accent-400 text-white rounded-full font-semibold hover:bg-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl text-sm xs:text-base min-h-touch"
                 >
-                  Запись на бесплатную консультацию
-                  <ArrowDown className="w-4 h-4 xs:w-5 xs:h-5" />
+                  ЕСТЬ ВОПРОС - НАПИШИ
                 </SmoothScrollLink>
               </motion.div>
             </motion.div>
@@ -158,7 +149,7 @@ export default function Hero() {
           className="hidden sm:flex absolute bottom-6 xs:bottom-10 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
-          transition={{ opacity: { delay: 0.9, duration: 0.5 }, y: { duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.9 } }}
+          transition={{ opacity: { delay: 0.8, duration: 0.5 }, y: { duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.8 } }}
         >
           <SmoothScrollLink href="#about" className="text-sage-500 hover:text-sage-600 min-h-touch min-w-touch flex items-center justify-center">
             <ArrowDown className="w-6 h-6 xs:w-8 xs:h-8" />

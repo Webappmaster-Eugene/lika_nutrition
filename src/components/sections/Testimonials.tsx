@@ -124,7 +124,7 @@ export default function Testimonials() {
                   <div className="relative flex-1 min-w-0 max-w-lg mx-auto">
                     <div className="absolute -inset-3 border border-sage-200/20 rounded-[1.75rem]" />
                     <div className="absolute -inset-1.5 border-2 border-accent-300/30 rounded-3xl" />
-                    <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+                    <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl bg-white">
                       <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                           key={currentIndex}
@@ -144,7 +144,7 @@ export default function Testimonials() {
                             src={testimonials[currentIndex].screenshot}
                             alt="Отзыв клиента о консультации нутрициолога Лики Надточеевой"
                             fill
-                            className="object-cover pointer-events-none"
+                            className="object-contain pointer-events-none"
                             sizes="(max-width: 768px) 100vw, 500px"
                           />
                         </motion.div>

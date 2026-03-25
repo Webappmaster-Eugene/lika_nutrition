@@ -68,7 +68,7 @@ export function ServicesTableModal({ isOpen, onClose }: ServicesTableModalProps)
             <table className="w-full text-sm border-collapse min-w-[800px]">
               <thead>
                 <tr>
-                  <th className="text-left p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold rounded-tl-lg sticky left-0 z-10 min-w-[180px]">
+                  <th className="text-left p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold rounded-tl-lg sticky left-0 z-20 min-w-[180px] shadow-[2px_0_4px_-2px_rgba(0,0,0,0.15)]">
                     Что Вы получаете?
                   </th>
                   {serviceTableColumns.map((col, index) => (
@@ -88,11 +88,11 @@ export function ServicesTableModal({ isOpen, onClose }: ServicesTableModalProps)
                 {serviceTableRows.map((row, rowIndex) => (
                   <tr
                     key={rowIndex}
-                    className={`${rowIndex % 2 === 0 ? 'bg-beige-50' : 'bg-white'} hover:bg-sage-50/50 transition-colors`}
+                    className={`group ${rowIndex % 2 === 0 ? 'bg-beige-50' : 'bg-white'} hover:bg-sage-50/50 transition-colors`}
                   >
-                    <td className={`p-3 font-medium text-sage-900 sticky left-0 z-10 ${
+                    <td className={`p-3 font-medium text-sage-900 sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${
                       rowIndex % 2 === 0 ? 'bg-beige-50' : 'bg-white'
-                    }`}>
+                    } group-hover:bg-sage-50`}>
                       {row.feature}
                     </td>
                     {serviceTableColumns.map((col) => {
