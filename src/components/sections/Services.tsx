@@ -80,7 +80,7 @@ export default function Services() {
 
                       <div className="space-y-3 mb-5 flex-1">
                         <div>
-                          <p className="text-xs font-bold text-sage-500 uppercase tracking-wider mb-1">Для кого:</p>
+                          <p className="text-xs font-bold text-accent-500 uppercase tracking-wider mb-1">Для кого:</p>
                           <p className="text-sm text-sage-700 leading-relaxed">
                             {service.targetAudience}
                           </p>

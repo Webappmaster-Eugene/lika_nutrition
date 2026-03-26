@@ -9,69 +9,6 @@ import { BotanicalDecoration } from '@/components/ui/BotanicalDecoration'
 import { socialLinks } from '@/lib/constants/social'
 import { Phone, Mail, Send, ArrowUp } from 'lucide-react'
 
-function FooterLogo({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 300 300"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Circle */}
-      <circle cx="150" cy="110" r="65" stroke="#8E9E7B" strokeWidth="2.5" fill="none" />
-      {/* Dot */}
-      <circle cx="150" cy="80" r="6" fill="#D4C9AF" />
-      {/* Left leaf */}
-      <path
-        d="M130 120 C120 95 125 70 145 55 C135 80 130 100 135 120 Z"
-        fill="#657554"
-      />
-      {/* Right leaf */}
-      <path
-        d="M155 55 C175 70 180 95 170 120 C165 100 160 80 155 55 Z"
-        fill="#556645"
-      />
-      {/* Stem */}
-      <path
-        d="M150 120 C150 130 148 140 150 145"
-        stroke="#657554"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      {/* Text: Lika Nadtocheeva */}
-      <text
-        x="150"
-        y="210"
-        textAnchor="middle"
-        fill="#E8E0D0"
-        fontSize="26"
-        fontFamily="'Playfair Display', Georgia, serif"
-        fontWeight="400"
-        letterSpacing="1"
-      >
-        Lika Nadtocheeva
-      </text>
-      {/* Line left */}
-      <line x1="55" y1="232" x2="110" y2="232" stroke="#8E9E7B" strokeWidth="1" />
-      {/* Text: resource */}
-      <text
-        x="150"
-        y="237"
-        textAnchor="middle"
-        fill="#8E9E7B"
-        fontSize="14"
-        fontFamily="'Inter', system-ui, sans-serif"
-        fontWeight="300"
-        letterSpacing="5"
-      >
-        resource
-      </text>
-      {/* Line right */}
-      <line x1="190" y1="232" x2="245" y2="232" stroke="#8E9E7B" strokeWidth="1" />
-    </svg>
-  )
-}
-
 const footerLinks = [
   { href: '#about', label: 'Обо мне' },
   { href: '#services', label: 'Услуги' },
@@ -173,7 +110,13 @@ export default function ContactFooter() {
             transition={{ duration: 0.6 }}
           >
             <SmoothScrollLink href="#hero" className="block">
-              <FooterLogo className="w-[168px] h-[168px]" />
+              <Image
+                src="/images/logo.jpg"
+                alt="Лика Надточеева - нутрициолог"
+                width={80}
+                height={80}
+                className="rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.15)]"
+              />
             </SmoothScrollLink>
           </motion.div>
 

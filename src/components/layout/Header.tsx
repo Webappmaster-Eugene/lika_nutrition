@@ -45,9 +45,9 @@ export default function Header() {
             <Image
               src="/images/logo.jpg"
               alt="Лика Надточеева - нутрициолог"
-              width={120}
-              height={120}
-              className="rounded-full w-20 h-20 sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px]"
+              width={56}
+              height={56}
+              className="rounded-full w-14 h-14"
               priority
             />
           </SmoothScrollLink>

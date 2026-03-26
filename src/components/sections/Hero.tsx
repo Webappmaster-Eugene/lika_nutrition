@@ -22,7 +22,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen bg-gradient-to-br from-beige-50 via-beige-100 to-sage-100 overflow-hidden pt-28 xs:pt-32 sm:pt-36"
+      className="relative min-h-screen bg-gradient-to-br from-beige-50 via-beige-100 to-sage-100 overflow-hidden pt-24 xs:pt-28 sm:pt-32"
     >
       {/* Декоративные ботанические элементы с parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
