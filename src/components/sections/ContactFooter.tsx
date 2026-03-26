@@ -109,13 +109,13 @@ export default function ContactFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SmoothScrollLink href="#hero" className="block">
+            <SmoothScrollLink href="#hero" className="block bg-white/90 rounded-2xl px-4 py-3 inline-block">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="Лика Надточеева - нутрициолог"
-                width={80}
-                height={80}
-                className="rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.15)]"
+                width={1280}
+                height={853}
+                className="h-16 xs:h-20 w-auto"
               />
             </SmoothScrollLink>
           </motion.div>

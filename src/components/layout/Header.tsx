@@ -43,11 +43,11 @@ export default function Header() {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt="Лика Надточеева - нутрициолог"
-              width={56}
-              height={56}
-              className="rounded-full w-14 h-14"
+              width={1280}
+              height={853}
+              className="h-12 xs:h-14 w-auto"
               priority
             />
           </SmoothScrollLink>
