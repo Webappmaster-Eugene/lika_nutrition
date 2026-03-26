@@ -47,7 +47,7 @@ export default function Header() {
               alt="Лика Надточеева - нутрициолог"
               width={1280}
               height={853}
-              className="h-12 xs:h-14 w-auto"
+              className="h-16 xs:h-20 sm:h-24 w-auto"
               priority
             />
           </SmoothScrollLink>

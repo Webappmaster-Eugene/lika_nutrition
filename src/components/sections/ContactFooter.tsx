@@ -115,7 +115,7 @@ export default function ContactFooter() {
                 alt="Лика Надточеева - нутрициолог"
                 width={1280}
                 height={853}
-                className="h-16 xs:h-20 w-auto"
+                className="h-32 xs:h-40 sm:h-48 w-auto"
               />
             </SmoothScrollLink>
           </motion.div>
