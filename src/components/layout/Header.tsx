@@ -45,8 +45,8 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="Лика Надточеева - нутрициолог"
-              width={1280}
-              height={853}
+              width={647}
+              height={391}
               className="h-16 xs:h-20 sm:h-24 w-auto"
               priority
             />

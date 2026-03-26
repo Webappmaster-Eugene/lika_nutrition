@@ -113,8 +113,8 @@ export default function ContactFooter() {
               <Image
                 src="/images/logo.png"
                 alt="Лика Надточеева - нутрициолог"
-                width={1280}
-                height={853}
+                width={647}
+                height={391}
                 className="h-32 xs:h-40 sm:h-48 w-auto"
               />
             </SmoothScrollLink>
