@@ -109,7 +109,7 @@ export default function ContactFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SmoothScrollLink href="#hero" className="block bg-white/90 rounded-2xl px-4 py-3 inline-block">
+            <SmoothScrollLink href="#hero" className="block">
               <Image
                 src="/images/logo.png"
                 alt="Лика Надточеева - нутрициолог"
