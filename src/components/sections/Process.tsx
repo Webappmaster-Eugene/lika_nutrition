@@ -50,7 +50,9 @@ export default function Process() {
                 <div className="pt-1 flex-1 min-w-0">
                   <div className="bg-sage-50/50 rounded-xl p-4 border border-sage-200/30">
                     <h3 className="text-base xs:text-lg font-semibold text-sage-900 mb-1">
-                      {step.title}
+                      <span className="inline-block border-2 border-accent-400 rounded-full px-4 py-1">
+                        {step.title}
+                      </span>
                     </h3>
                     <p className="text-sm xs:text-base text-sage-600 leading-relaxed whitespace-pre-line">
                       {step.description}
@@ -79,7 +81,9 @@ export default function Process() {
                           transition={{ duration: 0.5, delay: 0.1 }}
                         >
                           <h3 className="text-lg font-semibold text-sage-900 mb-2">
-                            {step.title}
+                            <span className="inline-block border-2 border-accent-400 rounded-full px-5 py-1">
+                              {step.title}
+                            </span>
                           </h3>
                           <p className="text-base text-sage-600 leading-relaxed whitespace-pre-line">
                             {step.description}
@@ -111,7 +115,9 @@ export default function Process() {
                           transition={{ duration: 0.5, delay: 0.1 }}
                         >
                           <h3 className="text-lg font-semibold text-sage-900 mb-2">
-                            {step.title}
+                            <span className="inline-block border-2 border-accent-400 rounded-full px-5 py-1">
+                              {step.title}
+                            </span>
                           </h3>
                           <p className="text-base text-sage-600 leading-relaxed whitespace-pre-line">
                             {step.description}

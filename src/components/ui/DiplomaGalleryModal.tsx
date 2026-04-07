@@ -10,6 +10,8 @@ const diplomas = [
   { src: '/images/diplomas/diploma-2.jpg', alt: 'Диплом нутрициолога 2' },
   { src: '/images/diplomas/diploma-3.jpg', alt: 'Диплом нутрициолога 3' },
   { src: '/images/diplomas/diploma-4.jpg', alt: 'Диплом нутрициолога 4' },
+  { src: '/images/diplomas/certificate-1.jpg', alt: 'Сертификат — Превентивный нутрициолог, II ступень' },
+  { src: '/images/diplomas/certificate-2.jpg', alt: 'Сертификат — Консультант-нутрициолог, I ступень' },
 ]
 
 const slideVariants = {
@@ -97,7 +99,7 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
           <button
             onClick={(e) => { e.stopPropagation(); goPrev() }}
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 rounded-full p-3 text-white transition-colors shadow-lg min-h-touch min-w-touch flex items-center justify-center"
-            aria-label="Предыдущий диплом"
+            aria-label="Предыдущий"
           >
             <ChevronLeft className="w-7 h-7" />
           </button>
@@ -105,7 +107,7 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
           <button
             onClick={(e) => { e.stopPropagation(); goNext() }}
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 rounded-full p-3 text-white transition-colors shadow-lg min-h-touch min-w-touch flex items-center justify-center"
-            aria-label="Следующий диплом"
+            aria-label="Следующий"
           >
             <ChevronRight className="w-7 h-7" />
           </button>
@@ -141,12 +143,12 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
                   setDirection(index > currentIndex ? 1 : -1)
                   setCurrentIndex(index)
                 }}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 flex-shrink-0 ${
                   index === currentIndex
                     ? 'bg-accent-400 w-6'
                     : 'bg-white/40 hover:bg-white/60 w-2'
                 }`}
-                aria-label={`Диплом ${index + 1}`}
+                aria-label={`Слайд ${index + 1}`}
               />
             ))}
           </div>

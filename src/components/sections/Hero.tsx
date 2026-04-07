@@ -18,6 +18,10 @@ export default function Hero() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -40])
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -80])
 
+  // Blur effect on scroll
+  const blurValue = useTransform(scrollYProgress, [0, 0.5], [0, 8])
+  const blurFilter = useTransform(blurValue, (v: number) => `blur(${v}px)`)
+
   return (
     <section
       ref={sectionRef}
@@ -38,7 +42,7 @@ export default function Hero() {
         </motion.svg>
       </div>
 
-      <div className="container mx-auto overflow-x-hidden py-6 xs:py-10 sm:py-16 relative z-10">
+      <motion.div className="container mx-auto overflow-x-hidden py-6 xs:py-10 sm:py-16 relative z-10" style={{ filter: blurFilter }}>
         <div className="max-w-3xl mx-auto w-full">
 
           <div>
@@ -60,7 +64,7 @@ export default function Hero() {
 
             {/* Фото с декоративной рамкой и свечением */}
             <motion.div
-              className="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm mx-auto mb-4 xs:mb-6"
+              className="relative w-full max-w-xs xs:max-w-sm sm:max-w-md mx-auto mb-4 xs:mb-6"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.3 }}
@@ -155,7 +159,7 @@ export default function Hero() {
             <ArrowDown className="w-6 h-6 xs:w-8 xs:h-8" />
           </SmoothScrollLink>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }

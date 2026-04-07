@@ -43,14 +43,15 @@ export function ServicesTableModal({ isOpen, onClose }: ServicesTableModalProps)
         onClick={onClose}
       >
         <motion.div
-          className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-auto relative border border-beige-200"
+          className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden relative border border-beige-200"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
+          <div className="overflow-auto max-h-[90vh]">
           {/* Header */}
-          <div className="sticky top-0 bg-white z-10 flex items-center justify-between p-4 xs:p-6 border-b border-beige-200">
+          <div className="sticky top-0 bg-white z-30 flex items-center justify-between p-4 xs:p-6 border-b border-beige-200">
             <h2 className="text-xl xs:text-2xl font-bold text-sage-900 font-serif">
               Таблица форматов работы
             </h2>
@@ -68,15 +69,13 @@ export function ServicesTableModal({ isOpen, onClose }: ServicesTableModalProps)
             <table className="w-full text-sm border-collapse min-w-[800px]">
               <thead>
                 <tr>
-                  <th className="text-left p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold rounded-tl-lg sticky left-0 z-20 min-w-[180px] shadow-[2px_0_4px_-2px_rgba(0,0,0,0.15)]">
+                  <th className="text-left p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold sticky left-0 z-20 min-w-[180px] shadow-[2px_0_4px_-2px_rgba(0,0,0,0.15)]">
                     Что Вы получаете?
                   </th>
-                  {serviceTableColumns.map((col, index) => (
+                  {serviceTableColumns.map((col) => (
                     <th
                       key={col.key}
-                      className={`p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold text-center min-w-[120px] ${
-                        index === serviceTableColumns.length - 1 ? 'rounded-tr-lg' : ''
-                      }`}
+                      className="p-3 bg-gradient-to-br from-sage-700 to-sage-600 text-white font-semibold text-center min-w-[120px]"
                     >
                       <div className="text-xs leading-tight">{col.label}</div>
                       <div className="text-accent-300 text-xs mt-1 font-bold">{col.price}</div>
@@ -111,6 +110,7 @@ export function ServicesTableModal({ isOpen, onClose }: ServicesTableModalProps)
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
         </motion.div>
       </motion.div>
