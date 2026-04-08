@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import FormField from './FormField'
 import { submitConsultationForm } from '@/lib/utils/formSubmission'
@@ -72,9 +73,9 @@ export default function ConsultationForm() {
         />
         <label htmlFor="consultation-privacy" className="text-sm xs:text-base text-sage-800 leading-relaxed cursor-pointer flex-1">
           Отправляя свои персональные данные, Вы соглашаетесь с{' '}
-          <a href="/privacy" className="text-accent-500 hover:text-accent-600 underline font-medium">
+          <Link href="/privacy" target="_blank" className="text-accent-500 hover:text-accent-600 underline font-medium">
             Положением о персональных данных
-          </a>
+          </Link>
         </label>
       </div>
       <div aria-live="polite" aria-atomic="true">

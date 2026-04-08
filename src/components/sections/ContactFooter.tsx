@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import ConsultationForm from '@/components/forms/ConsultationForm'
 import SmoothScrollLink from '@/components/ui/SmoothScrollLink'
 import { BotanicalDecoration } from '@/components/ui/BotanicalDecoration'
@@ -140,6 +141,14 @@ export default function ContactFooter() {
                     </SmoothScrollLink>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
+                  >
+                    Политика конфиденциальности
+                  </Link>
+                </li>
               </ul>
             </motion.div>
 

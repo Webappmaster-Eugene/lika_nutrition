@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '@/components/ui/Button'
 import FormField from './FormField'
@@ -86,9 +87,9 @@ export default function ContactForm() {
         />
         <label htmlFor="privacy" className="text-sm xs:text-base text-sage-800 leading-relaxed cursor-pointer flex-1">
           Отправляя свои персональные данные, Вы соглашаетесь с{' '}
-          <a href="/privacy" className="text-sage-700 hover:text-sage-800 underline font-medium">
+          <Link href="/privacy" target="_blank" className="text-sage-700 hover:text-sage-800 underline font-medium">
             Положением о персональных данных
-          </a>
+          </Link>
         </label>
       </div>
 
