@@ -51,11 +51,14 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'unset'
+      document.documentElement.style.overflow = 'unset'
     }
     return () => {
       document.body.style.overflow = 'unset'
+      document.documentElement.style.overflow = 'unset'
     }
   }, [isOpen])
 
@@ -75,7 +78,7 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 xs:p-4"
+        className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 xs:p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -143,7 +146,7 @@ export function DiplomaGalleryModal({ isOpen, onClose }: DiplomaGalleryModalProp
                   setDirection(index > currentIndex ? 1 : -1)
                   setCurrentIndex(index)
                 }}
-                className={`h-2 rounded-full transition-all duration-300 flex-shrink-0 ${
+                className={`h-2 min-h-0 rounded-full transition-all duration-300 flex-shrink-0 ${
                   index === currentIndex
                     ? 'bg-accent-400 w-6'
                     : 'bg-white/40 hover:bg-white/60 w-2'
