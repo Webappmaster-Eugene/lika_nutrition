@@ -6,12 +6,10 @@ import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const diplomas = [
-  { src: '/images/diplomas/diploma-1.jpg', alt: 'Диплом нутрициолога 1' },
-  { src: '/images/diplomas/diploma-2.jpg', alt: 'Диплом нутрициолога 2' },
-  { src: '/images/diplomas/diploma-3.jpg', alt: 'Диплом нутрициолога 3' },
-  { src: '/images/diplomas/diploma-4.jpg', alt: 'Диплом нутрициолога 4' },
-  { src: '/images/diplomas/certificate-1.jpg', alt: 'Сертификат — Превентивный нутрициолог, II ступень' },
-  { src: '/images/diplomas/certificate-2.jpg', alt: 'Сертификат — Консультант-нутрициолог, I ступень' },
+  { src: '/images/diplomas/1.jpg', alt: 'Сертификат 1' },
+  { src: '/images/diplomas/2.jpg', alt: 'Сертификат 2' },
+  { src: '/images/diplomas/3.jpg', alt: 'Сертификат 3' },
+  { src: '/images/diplomas/4.jpg', alt: 'Сертификат 4' },
 ]
 
 const slideVariants = {

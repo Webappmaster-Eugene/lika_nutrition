@@ -18,10 +18,6 @@ export default function Hero() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -40])
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -80])
 
-  // Blur effect on scroll
-  const blurValue = useTransform(scrollYProgress, [0, 0.5], [0, 8])
-  const blurFilter = useTransform(blurValue, (v: number) => `blur(${v}px)`)
-
   return (
     <section
       ref={sectionRef}
@@ -42,7 +38,7 @@ export default function Hero() {
         </motion.svg>
       </div>
 
-      <motion.div className="container mx-auto overflow-x-hidden py-6 xs:py-10 sm:py-16 relative z-10" style={{ filter: blurFilter }}>
+      <motion.div className="container mx-auto overflow-x-hidden py-6 xs:py-10 sm:py-16 relative z-10">
         <div className="max-w-3xl mx-auto w-full">
 
           <div>
