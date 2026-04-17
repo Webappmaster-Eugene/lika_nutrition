@@ -76,6 +76,10 @@ export default function ConsultationForm() {
           <Link href="/privacy" target="_blank" className="text-accent-500 hover:text-accent-600 underline font-medium">
             Положением о персональных данных
           </Link>
+          {' '}и принимаете условия{' '}
+          <Link href="/offer" target="_blank" className="text-accent-500 hover:text-accent-600 underline font-medium">
+            Публичной оферты
+          </Link>
         </label>
       </div>
       <div aria-live="polite" aria-atomic="true">

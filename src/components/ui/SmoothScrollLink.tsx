@@ -18,27 +18,38 @@ export default function SmoothScrollLink({
 }: SmoothScrollLinkProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    
-    if (href.startsWith('#')) {
-      const targetId = href.substring(1)
-      const element = document.getElementById(targetId)
-      
-      if (element) {
-        const headerOffset = 110
-        const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        })
+    // Закрываем мобильное меню сразу (если передан onClick)
+    if (onClick) {
+      onClick()
+    }
+
+    if (href.startsWith('#')) {
+      const scrollToTarget = () => {
+        const targetId = href.substring(1)
+        const element = document.getElementById(targetId)
+
+        if (element) {
+          const headerOffset = 110
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          })
+        }
+      }
+
+      if (onClick) {
+        // Ждём завершения exit-анимации AnimatePresence (300ms + буфер),
+        // чтобы framer-motion не сбросил scrollTo(0,0) во время анимации
+        setTimeout(scrollToTarget, 350)
+      } else {
+        scrollToTarget()
       }
     } else {
       window.location.href = href
-    }
-
-    if (onClick) {
-      onClick()
     }
   }
 

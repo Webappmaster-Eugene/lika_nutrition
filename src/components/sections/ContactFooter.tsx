@@ -15,6 +15,9 @@ const footerLinks = [
   { href: '#services', label: 'Услуги' },
   { href: '#testimonials', label: 'Отзывы' },
   { href: '#faq', label: 'FAQ' },
+  { href: '/about', label: 'Подробнее обо мне', isPage: true },
+  { href: '/services', label: 'Все услуги', isPage: true },
+  { href: '/blog', label: 'Блог', isPage: true },
 ]
 
 export default function ContactFooter() {
@@ -133,12 +136,21 @@ export default function ContactFooter() {
               <ul className="space-y-2 xs:space-y-3">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
-                    <SmoothScrollLink
-                      href={link.href}
-                      className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
-                    >
-                      {link.label}
-                    </SmoothScrollLink>
+                    {'isPage' in link && link.isPage ? (
+                      <Link
+                        href={link.href}
+                        className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <SmoothScrollLink
+                        href={link.href}
+                        className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
+                      >
+                        {link.label}
+                      </SmoothScrollLink>
+                    )}
                   </li>
                 ))}
                 <li>
@@ -147,6 +159,14 @@ export default function ContactFooter() {
                     className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
                   >
                     Политика конфиденциальности
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/offer"
+                    className="text-sm xs:text-base text-beige-300 hover:text-accent-300 transition-colors block py-1 min-h-touch flex items-center"
+                  >
+                    Публичная оферта
                   </Link>
                 </li>
               </ul>
