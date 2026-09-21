@@ -1,0 +1,40 @@
+# Generated machine paths/MCP/hooks are appended by npm run codex:sync.
+# Project-scoped only; does not change ~/.codex or credentials.
+approval_policy = "never"
+default_permissions = "lika"
+web_search = "live"
+project_doc_max_bytes = 65536
+
+[features]
+hooks = true
+multi_agent = true
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+
+[permissions.lika]
+description = "Full project access, Git, agent configuration and network"
+extends = ":workspace"
+
+[permissions.lika.filesystem.":workspace_roots"]
+"." = "write"
+".git" = "write"
+".codex" = "write"
+".agents" = "write"
+"app/.git" = "write"
+"app/.codex" = "write"
+"app/.agents" = "write"
+
+[permissions.lika.network]
+enabled = true
+
+[permissions.lika-review]
+description = "Read-only review with network access for GitHub feedback"
+extends = ":read-only"
+
+[permissions.lika-review.network]
+enabled = true
+
+[shell_environment_policy]
+inherit = "all"

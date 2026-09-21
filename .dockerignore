@@ -46,3 +46,8 @@ scripts
 
 # Info folder (не нужен в production)
 info
+
+# Agent harness (не нужен в образе)
+.codex
+.agents
+.claude
